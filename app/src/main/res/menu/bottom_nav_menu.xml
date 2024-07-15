@@ -7,7 +7,11 @@
     <item
         android:id="@+id/navigation_add"
         android:icon="@drawable/ic_add"
-        android:title="Add Workout" />
+        android:title="Add" />
+    <item
+        android:id="@+id/navigation_goals"
+        android:icon="@drawable/ic_goals"
+        android:title="Goals" />
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
@@ -17,3 +21,4 @@
         android:icon="@drawable/ic_about"
         android:title="About" />
 </menu>
+

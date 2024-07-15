@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.myapplication.databinding.GoalItemBinding
 
-class GoalAdapter : ListAdapter<Goal, GoalAdapter.GoalViewHolder>(GoalDiffCallback()) {
+class GoalAdapter : RecyclerView.Adapter<GoalAdapter.GoalViewHolder>() {
+
+    private var goals = emptyList<Goal>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {
         val binding = GoalItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -15,25 +17,21 @@ class GoalAdapter : ListAdapter<Goal, GoalAdapter.GoalViewHolder>(GoalDiffCallba
     }
 
     override fun onBindViewHolder(holder: GoalViewHolder, position: Int) {
-        val goal = getItem(position)
-        holder.bind(goal)
+        val currentGoal = goals[position]
+        holder.bind(currentGoal)
+    }
+
+    override fun getItemCount(): Int = goals.size
+
+    fun submitList(goalList: List<Goal>) {
+        goals = goalList
+        notifyDataSetChanged()
     }
 
     class GoalViewHolder(private val binding: GoalItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(goal: Goal) {
-            binding.goal = goal
-            binding.executePendingBindings()
-        }
-    }
-
-    class GoalDiffCallback : DiffUtil.ItemCallback<Goal>() {
-        override fun areItemsTheSame(oldItem: Goal, newItem: Goal): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Goal, newItem: Goal): Boolean {
-            return oldItem == newItem
+            binding.goalTitle.text = goal.title
+            binding.goalDescription.text = goal.description
         }
     }
 }
