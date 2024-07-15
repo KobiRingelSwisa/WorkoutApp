@@ -8,39 +8,31 @@
             type="com.mykotlinapps.myapplication.GoalViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".HomeFragment">
 
         <TextView
             android:id="@+id/goalsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Goals"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="Goals"
+            android:textSize="18sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/goalsRecyclerView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/goalsText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/goal_item" />
+            android:layout_weight="1"
+            android:orientation="vertical" />
 
         <Button
             android:id="@+id/addGoalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Goal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/goalsRecyclerView" />
+            android:text="Add Goal" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

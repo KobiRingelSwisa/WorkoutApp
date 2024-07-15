@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
         val view = binding.root
 
         binding.viewModel = goalViewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val adapter = GoalAdapter()
         binding.goalsRecyclerView.adapter = adapter
@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
             goals?.let {
                 adapter.submitList(it)
                 if (it.isEmpty()) {
-                    // Show a message suggesting to set goals
                     binding.goalsText.text = "No active goals. Set your goals!"
                 } else {
                     binding.goalsText.text = "Your Goals"

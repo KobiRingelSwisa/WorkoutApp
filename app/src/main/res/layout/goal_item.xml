@@ -1,48 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- res/layout/goal_item.xml -->
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <data>
-        <variable
-            name="goal"
-            type="com.mykotlinapps.myapplication.Goal" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/goalTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:text="Goal Title"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/goalTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{goal.title}"
-            android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/goalDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goal Description"
+        android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/goalDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{goal.description}"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/goalTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <CheckBox
-            android:id="@+id/goalCompleted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="@{goal.isCompleted}"
-            android:text="Completed"
-            app:layout_constraintTop_toBottomOf="@id/goalDescription"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <TextView
+        android:id="@+id/goalDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goal Duration"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray" />
+</LinearLayout>
