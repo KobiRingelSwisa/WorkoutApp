@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.mykotlinapps.myapplication.HomeFragment"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_add"
+            app:destination="@id/navigation_add" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add"
+        android:name="com.mykotlinapps.myapplication.AddEditFragment"
+        android:label="Add Workout" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.mykotlinapps.myapplication.SettingsFragment"
+        android:label="Settings" />
+
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="com.mykotlinapps.myapplication.AboutFragment"
+        android:label="About" />
+</navigation>
