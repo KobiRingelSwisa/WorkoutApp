@@ -1,6 +1,8 @@
-package com.mykotlinapps.myapplication
+package com.mykotlinapps.myapplication.repository
 
 import androidx.lifecycle.LiveData
+import com.mykotlinapps.myapplication.data.Goal
+import com.mykotlinapps.myapplication.data.GoalDao
 
 class GoalRepository(private val goalDao: GoalDao) {
 

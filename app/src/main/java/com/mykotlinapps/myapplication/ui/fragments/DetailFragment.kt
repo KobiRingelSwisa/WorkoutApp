@@ -1,7 +1,8 @@
-package com.mykotlinapps.myapplication
+package com.mykotlinapps.myapplication.ui.fragments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.mykotlinapps.myapplication.base.BaseFragment
 import com.mykotlinapps.myapplication.databinding.FragmentDetailBinding
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {

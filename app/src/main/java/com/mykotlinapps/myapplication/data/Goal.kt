@@ -1,7 +1,8 @@
-package com.mykotlinapps.myapplication
+package com.mykotlinapps.myapplication.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.mykotlinapps.myapplication.base.BaseEntity
 
 @Entity(tableName = "goal_table")
 data class Goal(

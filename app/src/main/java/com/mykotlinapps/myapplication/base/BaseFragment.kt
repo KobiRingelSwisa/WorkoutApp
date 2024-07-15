@@ -1,4 +1,4 @@
-package com.mykotlinapps.myapplication
+package com.mykotlinapps.myapplication.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

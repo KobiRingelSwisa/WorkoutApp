@@ -1,9 +1,10 @@
-package com.mykotlinapps.myapplication
+package com.mykotlinapps.myapplication.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.mykotlinapps.myapplication.data.Goal
 
 @Dao
 interface GoalDao {

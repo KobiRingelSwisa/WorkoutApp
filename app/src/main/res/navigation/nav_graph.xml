@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.mykotlinapps.myapplication.HomeFragment"
+        android:name="com.mykotlinapps.myapplication.ui.fragments.HomeFragment"
         android:label="Home" >
         <action
             android:id="@+id/action_navigation_home_to_navigation_add"
@@ -15,16 +15,16 @@
 
     <fragment
         android:id="@+id/navigation_add"
-        android:name="com.mykotlinapps.myapplication.AddEditFragment"
+        android:name="com.mykotlinapps.myapplication.ui.fragments.AddEditFragment"
         android:label="Add Workout" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.mykotlinapps.myapplication.SettingsFragment"
+        android:name="com.mykotlinapps.myapplication.ui.fragments.SettingsFragment"
         android:label="Settings" />
 
     <fragment
         android:id="@+id/navigation_about"
-        android:name="com.mykotlinapps.myapplication.AboutFragment"
+        android:name="com.mykotlinapps.myapplication.ui.fragments.AboutFragment"
         android:label="About" />
 </navigation>
