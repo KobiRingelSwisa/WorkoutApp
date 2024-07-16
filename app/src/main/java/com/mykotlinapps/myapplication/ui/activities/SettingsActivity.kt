@@ -11,6 +11,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
