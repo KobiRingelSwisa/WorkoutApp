@@ -1,13 +1,19 @@
 package com.mykotlinapps.myapplication.ui.fragments
 
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import com.mykotlinapps.myapplication.base.BaseFragment
-import com.mykotlinapps.myapplication.databinding.FragmentAboutBinding
+import androidx.fragment.app.Fragment
+import com.mykotlinapps.myapplication.R
 
-class AboutFragment : BaseFragment<FragmentAboutBinding>() {
+class AboutFragment : Fragment() {
 
-    override fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentAboutBinding {
-        return FragmentAboutBinding.inflate(inflater, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_about, container, false)
     }
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BodyBuilder - Workouts App</string>
+    <string name="app_logo">App Logo</string>
+    <string name="visit_website">Visit our website</string>
+    <string name="follow_us_social_media">Follow us on social media</string>
+    <string name="developer_info">Developed by: Your Name</string>
 </resources>
