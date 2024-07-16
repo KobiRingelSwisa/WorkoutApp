@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mykotlinapps.myapplication.adapter.GoalAdapter
+import com.mykotlinapps.myapplication.adapter.WorkoutAdapter
 import com.mykotlinapps.myapplication.data.WorkoutDatabase
 import com.mykotlinapps.myapplication.databinding.FragmentHomeBinding
 import com.mykotlinapps.myapplication.repository.GoalRepository
@@ -42,13 +43,46 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = GoalAdapter()
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = adapter
+        // Welcome Message
+        binding.welcomeMessage.text = "Welcome back!"
+
+        // Workout Summary
+        binding.workoutSummary.text = "No workout scheduled for today."
+
+        // Setup Quick Access Buttons
+        binding.startWorkoutButton.setOnClickListener {
+            // Navigate to start workout screen
+        }
+
+        binding.workoutPlansButton.setOnClickListener {
+            // Navigate to workout plans screen
+        }
+
+        binding.progressButton.setOnClickListener {
+            // Navigate to progress screen
+        }
+
+        // Setup RecyclerViews
+        val goalAdapter = GoalAdapter()
+        binding.goalsRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.goalsRecyclerView.adapter = goalAdapter
 
         goalViewModel.allGoals.observe(viewLifecycleOwner) { goals ->
-            goals?.let { adapter.submitList(it) }
+            goals?.let { goalAdapter.submitList(it) }
         }
+
+        // Setup Recent Workouts RecyclerView
+        val workoutAdapter = WorkoutAdapter(emptyList()) // Pass an empty list initially
+        binding.recentWorkoutsRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recentWorkoutsRecyclerView.adapter = workoutAdapter
+
+        // Fetch recent workouts from your data source and update adapter
+        // workoutViewModel.recentWorkouts.observe(viewLifecycleOwner) { workouts ->
+        //     workouts?.let { workoutAdapter.submitList(it) }
+        // }
+
+        // Motivational Quote
+        binding.motivationalQuote.text = "Believe you can and you're halfway there."
     }
 
     override fun onDestroyView() {
