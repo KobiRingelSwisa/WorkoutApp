@@ -1,13 +1,11 @@
 package com.mykotlinapps.myapplication.ui.fragments
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.mykotlinapps.myapplication.base.BaseFragment
-import com.mykotlinapps.myapplication.databinding.FragmentSettingsBinding
+import android.os.Bundle
+import androidx.preference.PreferenceFragmentCompat
+import com.mykotlinapps.myapplication.R
 
-class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
-
-    override fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSettingsBinding {
-        return FragmentSettingsBinding.inflate(inflater, container, false)
+class SettingsFragment : PreferenceFragmentCompat() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.preferences, rootKey)
     }
 }

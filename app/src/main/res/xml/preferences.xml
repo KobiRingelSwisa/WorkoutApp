@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+        <SwitchPreferenceCompat
+            android:key="notifications"
+            android:title="Enable Notifications"
+            android:summary="Receive notifications for new workouts and updates"
+            android:defaultValue="true" />
+
+        <EditTextPreference
+            android:key="username"
+            android:title="Username"
+            android:summary="Set your username"
+            android:defaultValue="User" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Account">
+        <EditTextPreference
+            android:key="email"
+            android:title="Email"
+            android:summary="Set your email address"
+            android:inputType="textEmailAddress"
+            android:defaultValue="user@example.com" />
+
+        <Preference
+            android:key="logout"
+            android:title="Logout"
+            android:summary="Logout from your account" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+        <Preference
+            android:key="version"
+            android:title="Version"
+            android:summary="1.0.0" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

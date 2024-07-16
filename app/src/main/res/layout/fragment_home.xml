@@ -122,6 +122,14 @@
                 android:layout_height="wrap_content"
                 android:text="Believe you can and you're halfway there."
                 android:paddingBottom="16dp"/>
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:layout_marginTop="16dp"/>
+
         </LinearLayout>
     </ScrollView>
 </layout>

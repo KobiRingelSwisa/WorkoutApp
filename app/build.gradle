@@ -65,4 +65,5 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
     testImplementation(libs.androidx.room.testing)
     implementation libs.androidx.recyclerview
+    implementation libs.androidx.preference
 }

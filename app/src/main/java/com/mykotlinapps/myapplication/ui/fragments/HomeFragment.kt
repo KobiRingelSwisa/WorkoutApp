@@ -1,5 +1,6 @@
 package com.mykotlinapps.myapplication.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.mykotlinapps.myapplication.adapter.WorkoutAdapter
 import com.mykotlinapps.myapplication.data.WorkoutDatabase
 import com.mykotlinapps.myapplication.databinding.FragmentHomeBinding
 import com.mykotlinapps.myapplication.repository.GoalRepository
+import com.mykotlinapps.myapplication.ui.activities.SettingsActivity
 import com.mykotlinapps.myapplication.viewmodel.GoalViewModel
 import com.mykotlinapps.myapplication.viewmodel.GoalViewModelFactory
 
@@ -83,6 +85,11 @@ class HomeFragment : Fragment() {
 
         // Motivational Quote
         binding.motivationalQuote.text = "Believe you can and you're halfway there."
+
+        binding.settingsButton.setOnClickListener {
+            val intent = Intent(context, SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {
