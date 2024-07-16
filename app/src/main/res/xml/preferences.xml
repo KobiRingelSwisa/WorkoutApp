@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="General">
-        <SwitchPreferenceCompat
-            android:key="notifications"
-            android:title="Enable Notifications"
-            android:summary="Receive notifications for new workouts and updates"
-            android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="account_category"
+        android:title="Account">
 
         <EditTextPreference
             android:key="username"
             android:title="Username"
-            android:summary="Set your username"
-            android:defaultValue="User" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="Account">
-        <EditTextPreference
-            android:key="email"
-            android:title="Email"
-            android:summary="Set your email address"
-            android:inputType="textEmailAddress"
-            android:defaultValue="user@example.com" />
+            app:useSimpleSummaryProvider="true"/>
 
         <Preference
-            android:key="logout"
-            android:title="Logout"
-            android:summary="Logout from your account" />
+            android:key="change_password"
+            android:title="Change Password"
+            android:summary="Tap to change your password"/>
+
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="About">
+    <PreferenceCategory
+        android:key="notifications_category"
+        android:title="Notifications">
+
+        <SwitchPreferenceCompat
+            android:key="enable_notifications"
+            android:title="Enable Notifications"/>
+
+        <SeekBarPreference
+            android:key="notification_frequency"
+            android:title="Notification Frequency"
+            android:defaultValue="3"
+            android:min="1"
+            android:max="5"
+            app:showSeekBarValue="true"
+            android:dependency="enable_notifications"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="data_category"
+        android:title="Data Management">
+
         <Preference
-            android:key="version"
-            android:title="Version"
-            android:summary="1.0.0" />
+            android:key="export_data"
+            android:title="Export Data"
+            android:summary="Export your workout data"/>
+
+        <Preference
+            android:key="delete_account"
+            android:title="Delete Account"
+            android:summary="Permanently delete your account and all data"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

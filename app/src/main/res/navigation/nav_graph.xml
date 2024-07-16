@@ -2,29 +2,30 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.mykotlinapps.myapplication.ui.fragments.HomeFragment"
-        android:label="Home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_add"
-            app:destination="@id/navigation_add" />
-    </fragment>
+        android:id="@+id/homeFragment"
+        android:name="com.mykotlinapps.bodybuilder.HomeFragment"
+        android:label="Home" />
 
     <fragment
-        android:id="@+id/navigation_add"
-        android:name="com.mykotlinapps.myapplication.ui.fragments.AddEditFragment"
-        android:label="Add Workout" />
+        android:id="@+id/analyticsFragment"
+        android:name="com.mykotlinapps.bodybuilder.AnalyticsFragment"
+        android:label="Analytics" />
 
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.mykotlinapps.myapplication.ui.fragments.SettingsFragment"
+        android:id="@+id/workoutPlansFragment"
+        android:name="com.mykotlinapps.bodybuilder.WorkoutPlansFragment"
+        android:label="Workout Plans" />
+
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"
+        android:label="Workout" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mykotlinapps.bodybuilder.SettingsFragment"
         android:label="Settings" />
-
-    <fragment
-        android:id="@+id/navigation_about"
-        android:name="com.mykotlinapps.myapplication.ui.fragments.AboutFragment"
-        android:label="About" />
 </navigation>

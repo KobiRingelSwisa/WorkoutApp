@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/navigation_add"
-        android:icon="@drawable/ic_add"
-        android:title="Add" />
+        android:id="@+id/analyticsFragment"
+        android:icon="@drawable/ic_analytics"
+        android:title="Analytics" />
     <item
-        android:id="@+id/navigation_goals"
-        android:icon="@drawable/ic_goals"
-        android:title="Goals" />
+        android:id="@+id/workoutPlansFragment"
+        android:icon="@drawable/ic_workout"
+        android:title="Plans" />
     <item
-        android:id="@+id/navigation_settings"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"
         android:title="Settings" />
-    <item
-        android:id="@+id/navigation_about"
-        android:icon="@drawable/ic_about"
-        android:title="About" />
 </menu>
-

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/strengthTrainingOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Strength Training"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/cardioOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cardio"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/freestyleWorkoutOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Freestyle Workout"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/bodyStatsOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Body Stats"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/progressPhotoOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Progress Photo"
+        android:padding="16dp" />
+
+</LinearLayout>

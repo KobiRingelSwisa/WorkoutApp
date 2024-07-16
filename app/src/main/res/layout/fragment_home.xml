@@ -1,135 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.mykotlinapps.myapplication.viewmodel.GoalViewModel" />
-    </data>
+    <TextView
+        android:id="@+id/fitnessLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fitness Level"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+    <ProgressBar
+        android:id="@+id/fitnessLevelProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fitnessLevelTitle" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fitnessLevelProgress" />
 
-            <!-- Welcome Message -->
-            <TextView
-                android:id="@+id/welcomeMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Welcome back!"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:paddingBottom="16dp"/>
+    <TextView
+        android:id="@+id/recentSessionsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Sessions"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-            <!-- Workout Summary -->
-            <TextView
-                android:id="@+id/workoutSummaryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today's Workout"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingBottom="8dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentSessionsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recentSessionsTitle" />
 
-            <TextView
-                android:id="@+id/workoutSummary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No workout scheduled for today."
-                android:paddingBottom="16dp"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addWorkoutFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- Quick Access Buttons -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/startWorkoutButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Start Workout"
-                    android:layout_margin="8dp"/>
-
-                <Button
-                    android:id="@+id/workoutPlansButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Workout Plans"
-                    android:layout_margin="8dp"/>
-
-                <Button
-                    android:id="@+id/progressButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Progress"
-                    android:layout_margin="8dp"/>
-            </LinearLayout>
-
-            <!-- Recent Workouts -->
-            <TextView
-                android:id="@+id/recentWorkoutsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recent Workouts"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingBottom="8dp"
-                android:paddingTop="16dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recentWorkoutsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"/>
-
-            <!-- Goals and Progress -->
-            <TextView
-                android:id="@+id/goalsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Goals"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingBottom="8dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/goalsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"/>
-
-            <!-- Motivational Quote or Tip -->
-            <TextView
-                android:id="@+id/motivationalQuoteTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today's Motivation"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/motivationalQuote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Believe you can and you're halfway there."
-                android:paddingBottom="16dp"/>
-
-            <Button
-                android:id="@+id/settingsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                android:layout_marginTop="16dp"/>
-
-        </LinearLayout>
-    </ScrollView>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
