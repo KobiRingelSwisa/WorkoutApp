@@ -5,20 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import com.mykotlinapps.bodybuilder.R
-import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
 
-    private lateinit var fitnessLevelProgress: ProgressBar
+    private lateinit var circularProgressBar: CircularProgressBar
+    private lateinit var progressPercentage: TextView
     private lateinit var calendarView: CalendarView
     private lateinit var recentSessionsRecyclerView: RecyclerView
     private lateinit var addWorkoutFab: FloatingActionButton
@@ -33,26 +34,33 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fitnessLevelProgress = view.findViewById(R.id.fitnessLevelProgress)
+        circularProgressBar = view.findViewById(R.id.fitnessLevelProgress)
+        progressPercentage = view.findViewById(R.id.progressPercentage)
         calendarView = view.findViewById(R.id.calendarView)
         recentSessionsRecyclerView = view.findViewById(R.id.recentSessionsRecyclerView)
         addWorkoutFab = view.findViewById(R.id.addWorkoutFab)
 
-        setupFitnessLevelProgress()
+        setupCircularProgressBar()
         setupCalendar()
         setupRecentSessions()
         setupAddWorkoutFab()
     }
 
-    private fun setupFitnessLevelProgress() {
-        // TODO: Calculate fitness level based on analytics
+    private fun setupCircularProgressBar() {
         val fitnessLevel = 75 // Example value
-        fitnessLevelProgress.progress = fitnessLevel
+
+        circularProgressBar.setProgressWithAnimation(fitnessLevel.toFloat(), 1000)
+        progressPercentage.text = "$fitnessLevel%"
+
+        circularProgressBar.setOnClickListener {
+            // Navigate to the analytics page
+            navigateToAnalytics()
+        }
     }
 
     private fun setupCalendar() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            // TODO: Handle date change
+            // Handle date change
         }
     }
 
@@ -62,7 +70,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getRecentSessions(): List<WorkoutSession> {
-        // TODO: Fetch recent sessions from a data source
+        // Fetch recent sessions from a data source
         return listOf(
             WorkoutSession("Morning Run", "30 min", Date()),
             WorkoutSession("Evening Yoga", "45 min", Date())
@@ -84,7 +92,9 @@ class HomeFragment : Fragment() {
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }
+
+    private fun navigateToAnalytics() {
+        // Navigation logic to the analytics page
+        findNavController().navigate(R.id.action_homeFragment_to_analyticsFragment)
+    }
 }
-
-
-
