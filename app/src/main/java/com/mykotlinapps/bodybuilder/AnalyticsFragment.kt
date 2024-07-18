@@ -5,19 +5,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mykotlinapps.bodybuilder.R
 
 class AnalyticsFragment : Fragment() {
+
+    private lateinit var muscleGroupRecyclerView: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_analytics, container, false)
+        return inflater.inflate(R.layout.fragment_analytics, container, false)
+    }
 
-        // TODO: Implement logic for body sketch interaction
-        // TODO: Setup RecyclerView for analytics information
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        return view
+        muscleGroupRecyclerView = view.findViewById(R.id.muscleGroupRecyclerView)
+        setupMuscleGroupRecyclerView()
+    }
+
+    private fun setupMuscleGroupRecyclerView() {
+        muscleGroupRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        val muscleGroupList = listOf(
+            MuscleGroupPerformance("Chest", "85%", "Strength training twice a week"),
+            MuscleGroupPerformance("Back", "78%", "Increase reps for better performance"),
+            MuscleGroupPerformance("Legs", "92%", "Great endurance, maintain current routine"),
+            // Add more muscle groups as needed
+        )
+
+        muscleGroupRecyclerView.adapter = MuscleGroupAdapter(requireContext(), muscleGroupList)
     }
 }

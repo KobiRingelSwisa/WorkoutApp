@@ -1,4 +1,4 @@
-package com.example.arcproject.data.local_db
+package com.mykotlinapps.bodybuilder.data.local_db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -7,12 +7,12 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.arcproject.data.Item
+import com.mykotlinapps.bodybuilder.data.Item
 
 @Dao
 interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-   suspend fun addItem(item:Item)
+   suspend fun addItem(item: Item)
 
     @Delete
     suspend fun deleteItem(vararg items:Item)

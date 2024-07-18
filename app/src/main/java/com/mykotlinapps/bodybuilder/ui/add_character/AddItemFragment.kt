@@ -1,4 +1,4 @@
-package com.example.arcproject.ui.add_character
+package com.mykotlinapps.bodybuilder.ui.add_character
 
 import android.content.Intent
 import android.net.Uri
@@ -11,10 +11,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.arcproject.data.Item
-import com.example.arcproject.R
-import com.example.arcproject.databinding.AddItemLayoutBinding
-import com.example.arcproject.ui.ItemsViewModel
+import com.mykotlinapps.bodybuilder.data.Item
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.databinding.AddItemLayoutBinding
+import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 
 class AddItemFragment : Fragment() {
     private  var _binding : AddItemLayoutBinding? = null

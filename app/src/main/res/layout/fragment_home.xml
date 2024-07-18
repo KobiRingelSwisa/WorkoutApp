@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/fitnessLevelTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fitness Level"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/fitnessLevelProgress"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
         app:cpb_background_progressbar_width="4dp"
         app:cpb_round_border="true"
         app:cpb_start_angle="270"
-        app:cpb_background_progressbar_color="@color/purple_500"/>
+        app:cpb_background_progressbar_color="@color/purple"/>
 
     <TextView
         android:id="@+id/progressPercentage"
@@ -59,7 +60,7 @@
         android:layout_height="wrap_content"
         android:text="Recent Sessions"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 

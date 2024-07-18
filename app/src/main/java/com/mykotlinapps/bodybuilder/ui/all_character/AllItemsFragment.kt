@@ -1,4 +1,4 @@
-package com.example.arcproject.ui.all_character
+package com.mykotlinapps.bodybuilder.ui.all_character
 
 import android.app.AlertDialog
 
@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.arcproject.R
-import com.example.arcproject.databinding.AllItemsLayoutBinding
-import com.example.arcproject.ui.ItemsViewModel
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.databinding.AllItemsLayoutBinding
+import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 
 class AllItemsFragment : Fragment() {
 

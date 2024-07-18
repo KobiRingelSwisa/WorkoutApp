@@ -14,10 +14,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
 
 class HomeFragment : Fragment() {
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var circularProgressBar: CircularProgressBar
     private lateinit var progressPercentage: TextView
     private lateinit var calendarView: CalendarView
@@ -28,7 +31,13 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

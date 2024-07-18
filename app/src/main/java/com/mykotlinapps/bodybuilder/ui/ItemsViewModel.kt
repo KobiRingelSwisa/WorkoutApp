@@ -1,12 +1,12 @@
-package com.example.arcproject.ui
+package com.mykotlinapps.bodybuilder.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.arcproject.data.Item
-import com.example.arcproject.data.repository.ItemRepository
+import com.mykotlinapps.bodybuilder.data.Item
+import com.mykotlinapps.bodybuilder.data.repository.ItemRepository
 import kotlinx.coroutines.launch
 
 class ItemsViewModel(application: Application) : AndroidViewModel(application) {

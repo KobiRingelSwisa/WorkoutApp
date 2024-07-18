@@ -1,4 +1,4 @@
-package com.example.arcproject.ui.single_character
+package com.mykotlinapps.bodybuilder.ui.single_character
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.example.arcproject.databinding.DetailItemLayoutBinding
-import com.example.arcproject.ui.ItemsViewModel
+import com.mykotlinapps.bodybuilder.databinding.DetailItemLayoutBinding
+import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 
 class DetailItemFragment: Fragment() {
 

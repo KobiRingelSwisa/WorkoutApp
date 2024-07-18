@@ -1,4 +1,4 @@
-package com.example.arcproject.data
+package com.mykotlinapps.bodybuilder.data
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

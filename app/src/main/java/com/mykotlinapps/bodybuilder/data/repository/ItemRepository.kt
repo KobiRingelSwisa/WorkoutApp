@@ -1,9 +1,9 @@
-package com.example.arcproject.data.repository
+package com.mykotlinapps.bodybuilder.data.repository
 
 import android.app.Application
-import com.example.arcproject.data.Item
-import com.example.arcproject.data.local_db.ItemDao
-import com.example.arcproject.data.local_db.ItemDataBase
+import com.mykotlinapps.bodybuilder.data.Item
+import com.mykotlinapps.bodybuilder.data.local_db.ItemDao
+import com.mykotlinapps.bodybuilder.data.local_db.ItemDataBase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
