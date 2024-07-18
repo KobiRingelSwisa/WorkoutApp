@@ -10,14 +10,20 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "items")
 data class Item(
 
-    @ColumnInfo(name="content")
-    val title:String,
+    @ColumnInfo(name="bodyPart")
+    val bodyPart:String,
 
-    @ColumnInfo(name="content_desc")
-    val description:String,
+    @ColumnInfo(name="equipment")
+    val equipment:String,
 
-    @ColumnInfo(name="image")
-    val photo:String?): Parcelable {
+    @ColumnInfo(name="name")
+    val name:String,
+
+    @ColumnInfo(name="target")
+    val target:String,
+
+    @ColumnInfo(name="gifUrl")
+    val gifUrl:String?): Parcelable {
 
         @PrimaryKey(autoGenerate = true)
         var id: Int = 0

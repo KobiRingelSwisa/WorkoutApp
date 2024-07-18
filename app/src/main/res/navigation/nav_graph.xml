@@ -13,6 +13,30 @@
             app:destination="@id/analyticsFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.add_character.AddItemFragment"
+        android:label="Add Item">
+        <action
+            android:id="@+id/action_addItemFragment_to_allItemsFragment"
+            app:destination="@id/action_addItemFragment_to_allItemsFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/allItemsFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.all_character.AllItemsFragment"
+        android:label="All Items">
+        <action
+            android:id="@+id/action_allItemsFragment_to_addItemFragment"
+            app:destination="@id/action_allItemsFragment_to_addItemFragment"/>
+
+        <action
+            android:id="@+id/action_allItemsFragment_to_detailItemFragment"
+            app:destination="@id/action_allItemsFragment_to_detailItemFragment"/>
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/analyticsFragment"

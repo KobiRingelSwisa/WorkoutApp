@@ -88,22 +88,22 @@ class AllItemsFragment : Fragment() {
     }
     @Suppress
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu, menu)
+        inflater.inflate(R.menu.bottom_nav_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
-    @Suppress
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.action_delete){
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Confirm Delete").setMessage("Are you sure you want to delete all items?")
-                .setPositiveButton("Yes"
-                ) { dialog, which ->
-                    viewModel.deleteAll()
-                    Toast.makeText(requireContext(),"Items Deleted",Toast.LENGTH_SHORT).show()
-                }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    @Suppress
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if(item.itemId == R.id.action_delete){
+//            val builder = AlertDialog.Builder(requireContext())
+//            builder.setTitle("Confirm Delete").setMessage("Are you sure you want to delete all items?")
+//                .setPositiveButton("Yes"
+//                ) { dialog, which ->
+//                    viewModel.deleteAll()
+//                    Toast.makeText(requireContext(),"Items Deleted",Toast.LENGTH_SHORT).show()
+//                }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

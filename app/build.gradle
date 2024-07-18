@@ -41,8 +41,6 @@ android {
 dependencies {
     implementation libs.androidx.room.common
     implementation libs.androidx.room.ktx
-    def nav_version = "2.5.3"
-
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
@@ -57,5 +55,6 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
     implementation libs.androidx.navigation.ui.ktx
     implementation libs.circularprogressbar
+    implementation libs.glide
 
 }

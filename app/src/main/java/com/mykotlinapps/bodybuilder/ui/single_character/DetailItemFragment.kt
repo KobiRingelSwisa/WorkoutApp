@@ -31,20 +31,20 @@ class DetailItemFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.chosenItem.observe(viewLifecycleOwner){
-            binding.itemTitle.text = it.title
-            binding.itemDesc.text = it.description
-            Glide.with(requireContext()).load(it.photo).circleCrop().into(binding.itemImg)
+            binding.itemTitle.text = it.name
+            binding.itemDesc.text = it.bodyPart
+            Glide.with(requireContext()).load(it.gifUrl).circleCrop().into(binding.itemImg)
         }
-        /* arguments?.getInt("item").let {
-            it?.let {
-                val item = ItemManager.items[it]
-
-                binding.itemTitle.text = item.title
-                binding.itemDesc.text = item.description
-                Glide.with(requireContext()).load(item.photo).circleCrop().into(binding.itemImg)
-
-            }
-        }*/
+//        arguments?.getInt("item").let {
+//            it?.let {
+//                val item = ItemManager.items[it]
+//
+//                binding.itemTitle.text = item.title
+//                binding.itemDesc.text = item.description
+//                Glide.with(requireContext()).load(item.photo).circleCrop().into(binding.itemImg)
+//
+//            }
+//        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

@@ -9,4 +9,8 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:windowBackground">@color/background</item>
     </style>
+
+    <style name="CustomBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <!-- Customize as needed -->
+    </style>
 </resources>

@@ -1,8 +1,12 @@
 [versions]
 agp = "8.4.1"
 artifactid = "version"
+calendarview = "2.0.4"
 circularprogressbar = "3.1.0"
+eventcalendar = "1.0.0"
 gaugeview = "0.2.0"
+glide = "4.15.1"
+gradle = "7.0.4"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -15,6 +19,8 @@ lifecycleLivedataKtx = "2.8.3"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
+materialCalendarview = "2.0.1"
+materialCalendarViewVersion = "1.7.0"
 navigationFragmentKtx = "2.7.7"
 preference = "1.2.1"
 recyclerview = "1.3.2"
@@ -22,6 +28,7 @@ roomCompiler = "2.0.20-Beta2"
 roomRuntime = "2.6.1"
 speedviewlib = "1.6.1"
 roomCommon = "2.6.1"
+weekview = "5.1.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,8 +45,12 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRunt
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
 artifactid = { module = "groupId:artifactId", version.ref = "artifactid" }
+calendarview = { module = "com.kizitonwose.calendarview:calendarview", version.ref = "calendarview" }
 circularprogressbar = { module = "com.mikhaellopez:circularprogressbar", version.ref = "circularprogressbar" }
+eventcalendar = { module = "com.github.riontech-oss:EventCalendar", version.ref = "eventcalendar" }
 gaugeview = { module = "com.github.Pygmalios:gaugeview", version.ref = "gaugeview" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -49,8 +60,11 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-calendar-view = { module = "com.applandeo:material-calendar-view", version.ref = "materialCalendarViewVersion" }
+material-calendarview = { module = "com.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }
 speedviewlib = { module = "com.github.anastr:speedviewlib", version.ref = "speedviewlib" }
 androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+weekview = { module = "com.alamkanak:weekview", version.ref = "weekview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

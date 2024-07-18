@@ -1,11 +1,16 @@
 package com.mykotlinapps.bodybuilder
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,8 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.databinding.BottomSheetAddWorkoutBinding
 import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
+import android.Manifest
+import androidx.activity.result.contract.ActivityResultContracts
 
 class HomeFragment : Fragment() {
 
@@ -27,10 +35,24 @@ class HomeFragment : Fragment() {
     private lateinit var recentSessionsRecyclerView: RecyclerView
     private lateinit var addWorkoutFab: FloatingActionButton
 
+    // Initialize the requestCameraPermissionLauncher in the Fragment
+    private val requestCameraPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // Permission is granted. Open the camera.
+            openCamera()
+        } else {
+            // Permission is denied. Show a message.
+            Toast.makeText(context, "Camera permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -93,17 +115,66 @@ class HomeFragment : Fragment() {
     }
 
     private fun showBottomSheetDialog() {
-        val bottomSheetDialog = BottomSheetDialog(requireContext())
-        val bottomSheetView = layoutInflater.inflate(R.layout.bottom_sheet_add_workout, null)
+        val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialog)
+        val bottomSheetBinding = BottomSheetAddWorkoutBinding.inflate(layoutInflater)
 
         // Set up the bottom sheet options here
 
-        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.setContentView(bottomSheetBinding.root)
+
+        val parentLayout = bottomSheetBinding.root.parent as View
+        val layoutParams = parentLayout.layoutParams
+
+        layoutParams.width = resources.displayMetrics.widthPixels / 2 // Set width to half the screen width
+        parentLayout.layoutParams = layoutParams
+
+        bottomSheetBinding.cardioOption.setOnClickListener{
+            Toast.makeText(context, "cardio",Toast.LENGTH_SHORT).show()
+        }
+        bottomSheetBinding.bodyStatsOption.setOnClickListener{
+            Toast.makeText(context, "bodystats",Toast.LENGTH_SHORT).show()
+        }
+        bottomSheetBinding.strengthTrainingOption.setOnClickListener {
+            Toast.makeText(context, "strength",Toast.LENGTH_SHORT).show()
+        }
+        bottomSheetBinding.freestyleWorkoutOption.setOnClickListener {
+            Toast.makeText(context, "freestyle",Toast.LENGTH_SHORT).show()
+        }
+        bottomSheetBinding.progressPhotoOption.setOnClickListener {
+            checkCameraPermission()
+        }
+
         bottomSheetDialog.show()
     }
 
     private fun navigateToAnalytics() {
         // Navigation logic to the analytics page
         findNavController().navigate(R.id.action_homeFragment_to_analyticsFragment)
+    }
+
+    private fun checkCameraPermission() {
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                // You can use the API that requires the permission.
+                openCamera()
+            }
+            shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
+                // In an educational UI, explain to the user why your app requires this
+                // permission for a specific feature to behave as expected.
+                Toast.makeText(context, "Camera permission is needed to take a progress photo", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                // Directly ask for the permission
+                requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+            }
+        }
+    }
+
+    private fun openCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivity(intent)
     }
 }

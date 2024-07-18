@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -20,6 +21,8 @@ class AddItemFragment : Fragment() {
     private  var _binding : AddItemLayoutBinding? = null
     private  val binding get() = _binding !!
     private var imageUri : Uri? = null
+    private var gifUrl : Uri? = null
+    private val target = "YourTarget"
     private  val viewModel : ItemsViewModel by activityViewModels()
 
     val pickImageLuncher: ActivityResultLauncher<Array<String>> = registerForActivityResult(
@@ -38,13 +41,18 @@ class AddItemFragment : Fragment() {
     ): View? {
         _binding = AddItemLayoutBinding.inflate(inflater,container,false)
         binding.finishBtn.setOnClickListener{
-//            val bundle = bundleOf("title" to binding.itemTitle.text.toString(),"description" to binding.itemDescription.text.toString())
-//            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
+            val bundle = bundleOf("title" to binding.itemTitle.text.toString(),"description" to binding.itemDescription.text.toString())
+            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
 
-              val item= Item(binding.itemTitle.text.toString(),binding.itemDescription.text.toString(),imageUri.toString())
+              val item= Item(
+                  binding.itemTitle.text.toString(),
+                  binding.itemDescription.text.toString(),
+                  imageUri.toString(),
+                  gifUrl.toString(),
+                  target )
             //ItemManager.add(item)
             viewModel.addItem(item)
-            findNavController().navigate((R.id.action_addItemFragment_to_allItemsFragment))//, bundleOf("item" to item)
+            findNavController().navigate((R.id.action_addItemFragment_to_allItemsFragment))
         }
 
         binding.imageBtn.setOnClickListener {
