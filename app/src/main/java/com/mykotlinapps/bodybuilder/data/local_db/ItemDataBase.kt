@@ -4,12 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.mykotlinapps.bodybuilder.data.BodyStats
 import com.mykotlinapps.bodybuilder.data.Item
 
-@Database(entities = arrayOf(Item:: class), version =1, exportSchema = false)
+@Database(entities = [Item::class, BodyStats::class], version =1, exportSchema = false)
 abstract class ItemDataBase: RoomDatabase() {
 
     abstract fun itemsDao(): ItemDao
+    abstract fun bodyStatsDao(): BodyStatsDao
 
     companion object{
         @Volatile
@@ -21,3 +23,4 @@ abstract class ItemDataBase: RoomDatabase() {
         }
     }
 }
+

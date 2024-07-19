@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Body Stats"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp" />
+
+    <EditText
+        android:id="@+id/weightEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight (kg)"
+        android:inputType="numberDecimal"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/bodyFatEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Body Fat (%)"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/waistSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Waist Size (cm)"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginTop="16dp"
+        android:padding="8dp" />
+</LinearLayout>

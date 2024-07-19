@@ -54,4 +54,26 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory>
+
+        <Preference
+            android:key="weight"
+            android:title="Weight"
+            android:summary="Not set"
+            android:icon="@drawable/ic_weight" />
+
+        <Preference
+            android:key="bodyFat"
+            android:title="Body Fat"
+            android:summary="Not set"
+            android:icon="@drawable/ic_body_fat" />
+
+        <Preference
+            android:key="waistSize"
+            android:title="Waist Size"
+            android:summary="Not set"
+            android:icon="@drawable/ic_waist_size" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

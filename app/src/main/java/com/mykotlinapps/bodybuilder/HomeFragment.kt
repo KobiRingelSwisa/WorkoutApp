@@ -137,7 +137,8 @@ class HomeFragment : Fragment() {
         parentLayout.layoutParams = layoutParams
 
         bottomSheetBinding.bodyStatsOption.setOnClickListener{
-            Toast.makeText(context, "bodystats",Toast.LENGTH_SHORT).show()
+            BodyStatsDialogFragment().show(childFragmentManager, "BodyStatsDialogFragment")
+            bottomSheetDialog.dismiss()
         }
         bottomSheetBinding.plannedWorkoutOption.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_workoutPlanFragment)
