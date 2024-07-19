@@ -23,7 +23,9 @@ data class Item(
     val target:String,
 
     @ColumnInfo(name="gifUrl")
-    val gifUrl:String?): Parcelable {
+    val gifUrl:String?,
+    @ColumnInfo(name="content")
+    val content: String): Parcelable {
 
         @PrimaryKey(autoGenerate = true)
         var id: Int = 0

@@ -49,7 +49,9 @@ class AddItemFragment : Fragment() {
                   binding.itemDescription.text.toString(),
                   imageUri.toString(),
                   gifUrl.toString(),
-                  target )
+                  target,
+                  "This is a detailed description of the exercise, including instructions on how to perform it, benefits, and any other relevant information."
+              )
             //ItemManager.add(item)
             viewModel.addItem(item)
             findNavController().navigate((R.id.action_addItemFragment_to_allItemsFragment))

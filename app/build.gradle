@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -41,6 +42,9 @@ android {
 dependencies {
     implementation libs.androidx.room.common
     implementation libs.androidx.room.ktx
+    implementation libs.androidx.room.runtime
+    kapt libs.androidx.room.compiler
+    implementation libs.androidx.room.ktx
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
@@ -57,5 +61,8 @@ dependencies {
     implementation libs.androidx.navigation.ui.ktx
     implementation libs.circularprogressbar
     implementation libs.glide
+    implementation libs.androidx.room.runtime
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
 
 }
