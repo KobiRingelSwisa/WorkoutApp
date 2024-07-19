@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mykotlinapps.bodybuilder.databinding.DialogPlansForDayBinding
-import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlansBinding
 
 class WorkoutPlansBottomSheetDialogFragment(private val date: String, private val workoutPlans: List<String>) : BottomSheetDialogFragment() {
 
     private var _binding: DialogPlansForDayBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = DialogPlansForDayBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -29,6 +28,7 @@ class WorkoutPlansBottomSheetDialogFragment(private val date: String, private va
 
         return view
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

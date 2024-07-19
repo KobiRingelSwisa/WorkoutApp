@@ -20,13 +20,14 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/templatesRecyclerView"
+            android:id="@+id/exerciseRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/myTemplatesTitle"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/myTemplatesTitle" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/generateAITemplateButton"
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="Generate AI Template"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/templatesRecyclerView"
+            app:layout_constraintTop_toBottomOf="@id/exerciseRecyclerView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/Widget.MaterialComponents.Button"/>

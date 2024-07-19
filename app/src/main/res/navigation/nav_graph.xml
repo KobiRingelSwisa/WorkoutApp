@@ -24,7 +24,7 @@
         android:label="Add Item">
         <action
             android:id="@+id/action_addItemFragment_to_allItemsFragment"
-            app:destination="@id/action_addItemFragment_to_allItemsFragment"/>
+            app:destination="@id/allItemsFragment"/>
 
     </fragment>
 
@@ -34,7 +34,7 @@
         android:label="All Items">
         <action
             android:id="@+id/action_allItemsFragment_to_addItemFragment"
-            app:destination="@id/action_allItemsFragment_to_addItemFragment"/>
+            app:destination="@id/addItemFragment"/>
 
         <action
             android:id="@+id/action_allItemsFragment_to_detailItemFragment"
@@ -67,5 +67,5 @@
         android:id="@+id/workoutPlanFragment"
         android:name="com.mykotlinapps.bodybuilder.WorkoutPlanFragment"
         android:label="WorkoutPlanFragment"
-        tools:layout="@layout/item_single_workout_plan" />
+        tools:layout="@layout/fragment_workout_plans" />
 </navigation>

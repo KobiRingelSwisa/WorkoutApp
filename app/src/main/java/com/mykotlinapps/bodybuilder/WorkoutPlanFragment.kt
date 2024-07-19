@@ -19,14 +19,14 @@ class WorkoutPlanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.item_single_workout_plan, container, false)
+        return inflater.inflate(R.layout.fragment_workout_plans, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         exerciseRecyclerView = view.findViewById(R.id.exerciseRecyclerView)
         setupExerciseRecyclerView()
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     private fun setupExerciseRecyclerView() {
@@ -41,5 +41,14 @@ class WorkoutPlanFragment : Fragment() {
         )
 
         exerciseRecyclerView.adapter = PlansAdapter(exerciseList)
+    }
+
+    private fun getTemplatesList(): List<Plan> {
+        // Populate with your template plans
+        return listOf(
+            Plan("Template 1", "Description of Template 1"),
+            Plan("Template 2", "Description of Template 2")
+            // Add more templates as needed
+        )
     }
 }
