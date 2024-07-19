@@ -38,6 +38,11 @@ class HomeFragment : Fragment() {
     private lateinit var recentSessionsRecyclerView: RecyclerView
     private lateinit var addWorkoutFab: FloatingActionButton
 
+    private val workoutPlans = mapOf(
+        "2023-07-19" to listOf("Workout A", "Workout B"),
+        "2023-07-20" to listOf("Workout C", "Workout D")
+    )
+
     // Initialize the requestCameraPermissionLauncher in the Fragment
     private val requestCameraPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -96,10 +101,10 @@ class HomeFragment : Fragment() {
 
     private fun setupCalendar() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            // Handle date change
-            val selectedDate = Calendar.getInstance()
-            selectedDate.set(year, month, dayOfMonth)
-            showPlansForDayDialog(selectedDate.time)
+            val date = "$year-${month + 1}-$dayOfMonth"
+            val plans = workoutPlans[date] ?: emptyList()
+            val bottomSheet = WorkoutPlansBottomSheetDialogFragment(date, plans)
+            bottomSheet.show(childFragmentManager, "WorkoutPlansBottomSheetDialogFragment")
         }
     }
 
@@ -133,7 +138,7 @@ class HomeFragment : Fragment() {
         val parentLayout = bottomSheetBinding.root.parent as View
         val layoutParams = parentLayout.layoutParams
 
-        layoutParams.width = resources.displayMetrics.widthPixels / 2 // Set width to half the screen width
+        layoutParams.width = resources.displayMetrics.widthPixels  
         parentLayout.layoutParams = layoutParams
 
         bottomSheetBinding.bodyStatsOption.setOnClickListener{
@@ -187,7 +192,7 @@ class HomeFragment : Fragment() {
 
     private fun showPlansForDayDialog(date: Date) {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_plans_for_day, null)
-        val dialogTitle = dialogView.findViewById<TextView>(R.id.dialogTitle)
+        val dialogTitle = dialogView.findViewById<TextView>(R.id.title)
         val plansRecyclerView = dialogView.findViewById<RecyclerView>(R.id.plansRecyclerView)
 
         dialogTitle.text = "Plans for ${date.toLocaleString()}"

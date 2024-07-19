@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/workoutPlansFragment"
-        android:name="com.mykotlinapps.bodybuilder.WorkoutPlansFragment"
+        android:name="com.mykotlinapps.bodybuilder.WorkoutPlansBottomSheetDialogFragment"
         android:label="Workout Plans" />
 
     <fragment
