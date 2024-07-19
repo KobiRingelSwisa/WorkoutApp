@@ -18,12 +18,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
-import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.databinding.BottomSheetAddWorkoutBinding
 import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
 import android.Manifest
+import android.app.AlertDialog
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import com.mykotlinapps.bodybuilder.data.Plan
+import com.mykotlinapps.bodybuilder.data.PlansAdapter
 
 class HomeFragment : Fragment() {
 
@@ -51,7 +54,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
+
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -92,6 +97,9 @@ class HomeFragment : Fragment() {
     private fun setupCalendar() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             // Handle date change
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(year, month, dayOfMonth)
+            showPlansForDayDialog(selectedDate.time)
         }
     }
 
@@ -128,14 +136,12 @@ class HomeFragment : Fragment() {
         layoutParams.width = resources.displayMetrics.widthPixels / 2 // Set width to half the screen width
         parentLayout.layoutParams = layoutParams
 
-        bottomSheetBinding.cardioOption.setOnClickListener{
-            Toast.makeText(context, "cardio",Toast.LENGTH_SHORT).show()
-        }
         bottomSheetBinding.bodyStatsOption.setOnClickListener{
             Toast.makeText(context, "bodystats",Toast.LENGTH_SHORT).show()
         }
-        bottomSheetBinding.strengthTrainingOption.setOnClickListener {
-            Toast.makeText(context, "strength",Toast.LENGTH_SHORT).show()
+        bottomSheetBinding.plannedWorkoutOption.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_workoutPlanFragment)
+            bottomSheetDialog.dismiss()
         }
         bottomSheetBinding.freestyleWorkoutOption.setOnClickListener {
             Toast.makeText(context, "freestyle",Toast.LENGTH_SHORT).show()
@@ -176,5 +182,33 @@ class HomeFragment : Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivity(intent)
+    }
+
+    private fun showPlansForDayDialog(date: Date) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_plans_for_day, null)
+        val dialogTitle = dialogView.findViewById<TextView>(R.id.dialogTitle)
+        val plansRecyclerView = dialogView.findViewById<RecyclerView>(R.id.plansRecyclerView)
+
+        dialogTitle.text = "Plans for ${date.toLocaleString()}"
+
+        plansRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        plansRecyclerView.adapter = PlansAdapter(getPlansForDate(date))
+
+        AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .setPositiveButton("Close") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun getPlansForDate(date: Date): List<Plan> {
+        // Fetch plans for the given date from a data source
+        // This is a placeholder implementation
+        return listOf(
+            Plan("Workout A", "Description of Workout A"),
+            Plan("Workout B", "Description of Workout B")
+        )
     }
 }

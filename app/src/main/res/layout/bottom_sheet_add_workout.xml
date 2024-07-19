@@ -6,18 +6,12 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/strengthTrainingOption"
+        android:id="@+id/plannedWorkoutOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Strength Training"
+        android:text="Planned Workout"
         android:padding="16dp" />
 
-    <TextView
-        android:id="@+id/cardioOption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cardio"
-        android:padding="16dp" />
 
     <TextView
         android:id="@+id/freestyleWorkoutOption"
