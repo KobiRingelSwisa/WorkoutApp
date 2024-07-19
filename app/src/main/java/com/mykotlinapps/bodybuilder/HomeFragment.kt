@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
         val parentLayout = bottomSheetBinding.root.parent as View
         val layoutParams = parentLayout.layoutParams
 
-        layoutParams.width = resources.displayMetrics.widthPixels  
+        layoutParams.width = resources.displayMetrics.widthPixels
         parentLayout.layoutParams = layoutParams
 
         bottomSheetBinding.bodyStatsOption.setOnClickListener{
