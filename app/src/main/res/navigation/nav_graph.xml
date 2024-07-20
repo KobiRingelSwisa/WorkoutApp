@@ -3,7 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.mykotlinapps.bodybuilder.SignInFragment"
+        android:label="Sign In">
+        <action
+            android:id="@+id/action_signInFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.mykotlinapps.bodybuilder.RegisterFragment"
+        android:label="Register">
+        <action
+            android:id="@+id/action_registerFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
@@ -12,18 +36,12 @@
         <action
             android:id="@+id/action_homeFragment_to_analyticsFragment"
             app:destination="@id/analyticsFragment" />
-
         <action
             android:id="@+id/action_homeFragment_to_workoutPlanFragment"
             app:destination="@id/workoutPlanFragment" />
-
         <action
             android:id="@+id/action_homeFragment_to_workoutPlansFragment"
             app:destination="@id/workoutPlansFragment" />
-
-
-
-
     </fragment>
 
     <fragment
@@ -33,7 +51,6 @@
         <action
             android:id="@+id/action_addItemFragment_to_allItemsFragment"
             app:destination="@id/allItemsFragment"/>
-
     </fragment>
 
     <fragment
@@ -43,13 +60,10 @@
         <action
             android:id="@+id/action_allItemsFragment_to_addItemFragment"
             app:destination="@id/addItemFragment"/>
-
         <action
             android:id="@+id/action_allItemsFragment_to_detailItemFragment"
             app:destination="@id/action_allItemsFragment_to_detailItemFragment"/>
-
     </fragment>
-
 
     <fragment
         android:id="@+id/analyticsFragment"
@@ -60,11 +74,6 @@
         android:id="@+id/workoutPlansFragment"
         android:name="com.mykotlinapps.bodybuilder.PlansFragment"
         android:label="Workout Plans" />
-
-    <!--    <fragment-->
-    <!--        android:id="@+id/workoutFragment"-->
-    <!--        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"-->
-    <!--        android:label="Workout" />-->
 
     <fragment
         android:id="@+id/settingsFragment"
@@ -81,8 +90,9 @@
         android:id="@+id/createWorkoutFragment"
         android:name="com.mykotlinapps.bodybuilder.ui.add_character.CreateWorkoutFragment"
         android:label="Create Workout">
-    <argument
-        android:name="exercise"
-        app:argType="com.mykotlinapps.bodybuilder.Exercise" />
+        <argument
+            android:name="exercise"
+            app:argType="com.mykotlinapps.bodybuilder.Exercise" />
     </fragment>
+
 </navigation>

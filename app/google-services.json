@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "127783426038",
+    "project_id": "workoutapp-2c198",
+    "storage_bucket": "workoutapp-2c198.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127783426038:android:4ad65451d25378c98a19d7",
+        "android_client_info": {
+          "package_name": "com.mykotlinapps.bodybuilder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4PvjlmfjPPrSek7SHh3bbq4xrMAxNa2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
