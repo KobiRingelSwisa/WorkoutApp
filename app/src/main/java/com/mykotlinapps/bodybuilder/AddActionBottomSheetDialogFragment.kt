@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mykotlinapps.bodybuilder.databinding.DialogPlansForDayBinding
 
-class WorkoutPlansBottomSheetDialogFragment() : BottomSheetDialogFragment() {
+class AddActionBottomSheetDialogFragment() : BottomSheetDialogFragment() {
 
     private var _binding: DialogPlansForDayBinding? = null
     private val binding get() = _binding!!
@@ -19,8 +19,8 @@ class WorkoutPlansBottomSheetDialogFragment() : BottomSheetDialogFragment() {
         private const val ARG_DATE = "date"
         private const val ARG_WORKOUT_PLANS = "workout_plans"
 
-        fun newInstance(date: String, workoutPlans: List<String>): WorkoutPlansBottomSheetDialogFragment {
-            val fragment = WorkoutPlansBottomSheetDialogFragment()
+        fun newInstance(date: String, workoutPlans: List<String>): AddActionBottomSheetDialogFragment {
+            val fragment = AddActionBottomSheetDialogFragment()
             val args = Bundle()
             args.putString(ARG_DATE, date)
             args.putStringArrayList(ARG_WORKOUT_PLANS, ArrayList(workoutPlans))

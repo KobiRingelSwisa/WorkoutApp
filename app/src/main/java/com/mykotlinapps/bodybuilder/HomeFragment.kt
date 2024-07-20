@@ -23,7 +23,6 @@ import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
 import android.Manifest
 import android.app.AlertDialog
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
@@ -103,7 +102,7 @@ class HomeFragment : Fragment() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val date = "$year-${month + 1}-$dayOfMonth"
             val plans = workoutPlans[date] ?: emptyList()
-            val bottomSheet = WorkoutPlansBottomSheetDialogFragment.newInstance(date, plans)
+            val bottomSheet = AddActionBottomSheetDialogFragment.newInstance(date, plans)
             bottomSheet.show(childFragmentManager, "WorkoutPlansBottomSheetDialogFragment")
         }
     }

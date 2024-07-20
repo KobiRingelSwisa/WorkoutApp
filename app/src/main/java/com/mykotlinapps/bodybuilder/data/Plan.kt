@@ -3,13 +3,13 @@ package com.mykotlinapps.bodybuilder.data
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mykotlinapps.bodybuilder.databinding.ItemSingleWorkoutPlanBinding
+import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlanBinding
 
 data class Plan(val name: String, val description: String)
 
 class PlansAdapter(private val plans: List<Plan>) : RecyclerView.Adapter<PlansAdapter.PlanViewHolder>() {
 
-    class PlanViewHolder(private val binding: ItemSingleWorkoutPlanBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PlanViewHolder(private val binding: FragmentWorkoutPlanBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(plan: Plan) {
             binding.titleText.text = plan.name
 
@@ -17,7 +17,7 @@ class PlansAdapter(private val plans: List<Plan>) : RecyclerView.Adapter<PlansAd
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlanViewHolder {
-        val binding = ItemSingleWorkoutPlanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = FragmentWorkoutPlanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PlanViewHolder(binding)
     }
 

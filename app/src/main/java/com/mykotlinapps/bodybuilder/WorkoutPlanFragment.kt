@@ -10,27 +10,28 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
+import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlanBinding
 
 class WorkoutPlanFragment : Fragment() {
 
-    private lateinit var exerciseRecyclerView: RecyclerView
+    private var _binding: FragmentWorkoutPlanBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_workout_plans, container, false)
+        _binding = FragmentWorkoutPlanBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        exerciseRecyclerView = view.findViewById(R.id.exerciseRecyclerView)
-        setupExerciseRecyclerView()
         super.onViewCreated(view, savedInstanceState)
-
+        setupExerciseRecyclerView()
     }
 
     private fun setupExerciseRecyclerView() {
-        exerciseRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.exerciseRecyclerView.layoutManager = LinearLayoutManager(context)
 
         val exerciseList = listOf(
             Plan("Push-ups", "Do 3 sets of 15 reps"),
@@ -40,7 +41,12 @@ class WorkoutPlanFragment : Fragment() {
             // Add more exercises as needed
         )
 
-        exerciseRecyclerView.adapter = PlansAdapter(exerciseList)
+        binding.exerciseRecyclerView.adapter = PlansAdapter(exerciseList)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun getTemplatesList(): List<Plan> {

@@ -22,7 +22,7 @@ class MuscleGroupAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MuscleGroupViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_muscle_group_card, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.muscle_group_performance_card, parent, false)
         return MuscleGroupViewHolder(itemView)
     }
 

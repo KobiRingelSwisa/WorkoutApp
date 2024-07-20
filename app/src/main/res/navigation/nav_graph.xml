@@ -58,13 +58,13 @@
 
     <fragment
         android:id="@+id/workoutPlansFragment"
-        android:name="com.mykotlinapps.bodybuilder.WorkoutPlansFragment"
+        android:name="com.mykotlinapps.bodybuilder.PlansFragment"
         android:label="Workout Plans" />
 
-    <fragment
-        android:id="@+id/workoutFragment"
-        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"
-        android:label="Workout" />
+<!--    <fragment-->
+<!--        android:id="@+id/workoutFragment"-->
+<!--        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"-->
+<!--        android:label="Workout" />-->
 
     <fragment
         android:id="@+id/settingsFragment"
@@ -75,5 +75,5 @@
         android:id="@+id/workoutPlanFragment"
         android:name="com.mykotlinapps.bodybuilder.WorkoutPlanFragment"
         android:label="WorkoutPlanFragment"
-        tools:layout="@layout/fragment_workout_plans" />
+        tools:layout="@layout/fragment_plans" />
 </navigation>

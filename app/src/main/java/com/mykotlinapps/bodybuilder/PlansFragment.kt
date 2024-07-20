@@ -5,20 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
-import com.mykotlinapps.bodybuilder.R
-import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlansBinding
+import com.mykotlinapps.bodybuilder.databinding.FragmentPlansBinding
+class PlansFragment : Fragment() {
 
-class WorkoutPlansFragment : Fragment() {
-
-    private var _binding: FragmentWorkoutPlansBinding? = null
+    private var _binding: FragmentPlansBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentWorkoutPlansBinding.inflate(inflater, container, false)
+        _binding = FragmentPlansBinding.inflate(inflater, container, false)
         return binding.root
 
         // TODO: Setup RecyclerView for workout templates
