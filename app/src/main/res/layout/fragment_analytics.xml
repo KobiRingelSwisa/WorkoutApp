@@ -48,6 +48,7 @@
                 app:layout_constraintTop_toBottomOf="@id/bodySketchImageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
                 android:background="@color/white"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

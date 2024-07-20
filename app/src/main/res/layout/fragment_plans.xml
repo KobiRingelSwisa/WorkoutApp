@@ -57,10 +57,10 @@
             app:layout_constraintTop_toBottomOf="@id/myWorkoutsTitle" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/generateAITemplateButton"
+            android:id="@+id/generateWorkout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Generate AI Template"
+            android:text="Generate Workout"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/exerciseRecyclerView"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/generateAITemplateButton" />
+            app:layout_constraintTop_toBottomOf="@id/generateWorkout" />
 
         <TextView
             android:id="@+id/communityWorkoutsTitle"

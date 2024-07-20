@@ -45,7 +45,8 @@ class AnalyticsFragment : Fragment() {
     }
 
     private fun setupMuscleGroupRecyclerView() {
-        muscleGroupRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        muscleGroupRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         val muscleGroupList = listOf(
             MuscleGroupPerformance("Chest", "85%", "Strength training twice a week"),
@@ -54,7 +55,15 @@ class AnalyticsFragment : Fragment() {
             // Add more muscle groups as needed
         )
 
-        muscleGroupRecyclerView.adapter = MuscleGroupAdapter(requireContext(), muscleGroupList)
+        muscleGroupRecyclerView.adapter =
+            MuscleGroupAdapter(requireContext(), muscleGroupList) { muscleGroup ->
+                openAnalyticsWindow(muscleGroup)
+            }
+    }
+
+    private fun openAnalyticsWindow(muscleGroup: MuscleGroupPerformance) {
+        // Handle opening analytics window for the chosen muscle group
+        // For example, navigate to another fragment and pass the muscle group data
     }
 
     private fun showLoadingAnimation() {

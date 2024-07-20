@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,28 +13,29 @@ data class MuscleGroupPerformance(val muscleGroup: String, val performance: Stri
 
 class MuscleGroupAdapter(
     private val context: Context,
-    private val muscleGroupList: List<MuscleGroupPerformance>
+    private val muscleGroupList: List<MuscleGroupPerformance>,
+    private val onMuscleGroupClick: (MuscleGroupPerformance) -> Unit
 ) : RecyclerView.Adapter<MuscleGroupAdapter.MuscleGroupViewHolder>() {
 
     class MuscleGroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val muscleGroupTextView: TextView = itemView.findViewById(R.id.muscleGroupTextView)
+        val muscleGroupButton: Button = itemView.findViewById(R.id.muscleGroupButton)
         val performanceTextView: TextView = itemView.findViewById(R.id.performanceTextView)
         val insightsTextView: TextView = itemView.findViewById(R.id.insightsTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MuscleGroupViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.muscle_group_performance_card, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.muscle_group_analytics_button, parent, false)
         return MuscleGroupViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MuscleGroupViewHolder, position: Int) {
         val currentItem = muscleGroupList[position]
-        holder.muscleGroupTextView.text = currentItem.muscleGroup
+        holder.muscleGroupButton.text = currentItem.muscleGroup
         holder.performanceTextView.text = currentItem.performance
         holder.insightsTextView.text = currentItem.insights
 
-        holder.itemView.setOnClickListener {
-            showDetailDialog(currentItem)
+        holder.muscleGroupButton.setOnClickListener {
+            onMuscleGroupClick(currentItem)
         }
     }
 
