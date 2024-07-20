@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:padding="10dp">
 
+    <View
+        android:id="@+id/backgroundView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/home_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"/>
+
+
     <TextView
         android:id="@+id/fitnessLevelTitle"
         android:layout_width="match_parent"

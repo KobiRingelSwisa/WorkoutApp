@@ -2,6 +2,7 @@
 agp = "8.4.1"
 artifactid = "version"
 calendarview = "2.0.4"
+circleprogress = "1.2.1"
 circularprogressbar = "3.1.0"
 eventcalendar = "1.0.0"
 gaugeview = "0.2.0"
@@ -18,6 +19,7 @@ kotlinxCoroutinesAndroidVersion = "1.5.2"
 kotlinxCoroutinesCore = "1.7.2"
 kotlinxCoroutinesCoreVersion = "1.5.2"
 lifecycleLivedataKtx = "2.8.3"
+lottie = "4.2.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
@@ -53,6 +55,7 @@ androidx-room-runtime-v240 = { module = "androidx.room:room-runtime", version.re
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
 artifactid = { module = "groupId:artifactId", version.ref = "artifactid" }
 calendarview = { module = "com.kizitonwose.calendarview:calendarview", version.ref = "calendarview" }
+circleprogress = { module = "com.github.lzyzsd:circleprogress", version.ref = "circleprogress" }
 circularprogressbar = { module = "com.mikhaellopez:circularprogressbar", version.ref = "circularprogressbar" }
 eventcalendar = { module = "com.github.riontech-oss:EventCalendar", version.ref = "eventcalendar" }
 gaugeview = { module = "com.github.Pygmalios:gaugeview", version.ref = "gaugeview" }
@@ -66,6 +69,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-android-v152 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroidVersion" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 kotlinx-coroutines-core-v152 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
