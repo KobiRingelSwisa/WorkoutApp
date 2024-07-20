@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:padding="10dp">
 
+
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_animation"
         android:layout_width="112dp"
@@ -14,6 +16,18 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         android:visibility="gone" />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/backgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_weight="4"
+        android:background="@drawable/home_background" />
+</RelativeLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,6 +60,7 @@
             app:cpb_progressbar_width="8dp"
             app:cpb_round_border="true"
             app:cpb_start_angle="270"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fitnessLevelTitle" />
@@ -67,6 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginTop="16dp"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fitnessLevelProgress" />
