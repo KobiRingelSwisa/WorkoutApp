@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.mykotlinapps.bodybuilder.databinding.FragmentPlansBinding
 class PlansFragment : Fragment() {
 
@@ -23,6 +24,12 @@ class PlansFragment : Fragment() {
 
 
     }
+
+//    private fun navigateToCreateWorkout() {
+//        // Replace with your navigation logic
+//        // For example, if you are using Navigation Component:
+//        findNavController().navigate(R.id.action_plansFragment_to_fragment_create_workout)
+//    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

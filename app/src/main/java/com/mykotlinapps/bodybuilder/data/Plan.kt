@@ -7,7 +7,7 @@ import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlanBinding
 
 data class Plan(val name: String, val description: String)
 
-class PlansAdapter(private val plans: List<Plan>) : RecyclerView.Adapter<PlansAdapter.PlanViewHolder>() {
+class PlansAdapter(private var plans: List<Plan>) : RecyclerView.Adapter<PlansAdapter.PlanViewHolder>() {
 
     class PlanViewHolder(private val binding: FragmentWorkoutPlanBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(plan: Plan) {
@@ -28,5 +28,10 @@ class PlansAdapter(private val plans: List<Plan>) : RecyclerView.Adapter<PlansAd
 
     override fun getItemCount(): Int {
         return plans.size
+    }
+
+    fun updatePlans(newPlans: List<Plan>) {
+        plans = newPlans
+        notifyDataSetChanged()
     }
 }
