@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.snackbar.Snackbar
 import com.mykotlinapps.bodybuilder.databinding.FragmentSignInBinding
 
+
 class SignInFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
@@ -32,6 +33,10 @@ class SignInFragment : Fragment() {
         binding.btnSignIn.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
+
+            // Hide the keyboard
+            requireContext().hideKeyboard(view)
+
             signInUser(email, password)
         }
 
@@ -57,3 +62,4 @@ class SignInFragment : Fragment() {
         _binding = null
     }
 }
+

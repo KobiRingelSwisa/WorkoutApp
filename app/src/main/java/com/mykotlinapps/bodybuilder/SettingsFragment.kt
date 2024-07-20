@@ -12,7 +12,8 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.Preference
 import com.airbnb.lottie.LottieAnimationView
-import com.mykotlinapps.bodybuilder.data.BodyStats
+import com.google.firebase.auth.FirebaseAuth
+import androidx.navigation.fragment.findNavController
 import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -70,11 +71,26 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
         private lateinit var sharedPreferences: SharedPreferences
         private val viewModel: ItemsViewModel by viewModels()
+        private lateinit var auth: FirebaseAuth
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferences, rootKey)
 
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            auth = FirebaseAuth.getInstance()
+
+            // Set user email in preference summary
+            val userEmailPref: Preference? = findPreference("user_email")
+            userEmailPref?.summary = auth.currentUser?.email ?: "Not logged in"
+
+            // Handle logout preference click
+            val logoutPref: Preference? = findPreference("logout")
+            logoutPref?.setOnPreferenceClickListener {
+                auth.signOut()
+                findNavController().navigate(R.id.signInFragment)
+                true
+            }
+
             sharedPreferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
                 if (key == "weight" || key == "bodyFat" || key == "waistSize") {
                     updatePreferences()

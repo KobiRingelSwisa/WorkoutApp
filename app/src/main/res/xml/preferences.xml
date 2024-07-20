@@ -17,6 +17,18 @@
             android:title="Change Password"
             android:summary="Tap to change your password"/>
 
+        <!-- Display User Email -->
+        <Preference
+            android:key="user_email"
+            android:title="Email"
+            android:summary="User Email"/>
+
+        <!-- Logout Button -->
+        <Preference
+            android:key="logout"
+            android:title="Logout"
+            android:summary="Tap to logout"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory

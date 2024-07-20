@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_homeFragment_to_workoutPlansFragment"
             app:destination="@id/workoutPlansFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
