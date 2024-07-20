@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -24,8 +24,10 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-//        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-//        bottomNavigationView.setupWithNavController(navController)
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            navController.navigate(R.id.homeFragment)
+        }
+
         binding.bottomNavigationView.setupWithNavController(navController)
     }
 }

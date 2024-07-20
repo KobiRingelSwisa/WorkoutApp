@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -43,6 +44,9 @@ dependencies {
     implementation libs.androidx.room.common
     implementation libs.androidx.room.ktx
     implementation libs.androidx.room.runtime
+    implementation libs.firebase.auth
+    implementation libs.firebase.auth.ktx
+    implementation libs.firebase.firestore.ktx
     kapt libs.androidx.room.compiler
     implementation libs.androidx.room.ktx
     implementation libs.androidx.core.ktx
@@ -64,5 +68,9 @@ dependencies {
     implementation libs.androidx.room.runtime
     implementation libs.kotlinx.coroutines.core
     implementation libs.kotlinx.coroutines.android
-    implementation libs.lottie
+    implementation "com.airbnb.android:lottie:3.4.0"
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
+    implementation 'com.google.firebase:firebase-firestore-ktx:23.0.4'
 }
