@@ -16,6 +16,14 @@
         <action
             android:id="@+id/action_homeFragment_to_workoutPlanFragment"
             app:destination="@id/workoutPlanFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_workoutPlansFragment"
+            app:destination="@id/workoutPlansFragment" />
+
+
+
+
     </fragment>
 
     <fragment
@@ -50,7 +58,7 @@
 
     <fragment
         android:id="@+id/workoutPlansFragment"
-        android:name="com.mykotlinapps.bodybuilder.WorkoutPlansBottomSheetDialogFragment"
+        android:name="com.mykotlinapps.bodybuilder.WorkoutPlansFragment"
         android:label="Workout Plans" />
 
     <fragment

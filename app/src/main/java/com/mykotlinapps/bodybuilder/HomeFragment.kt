@@ -103,7 +103,7 @@ class HomeFragment : Fragment() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val date = "$year-${month + 1}-$dayOfMonth"
             val plans = workoutPlans[date] ?: emptyList()
-            val bottomSheet = WorkoutPlansBottomSheetDialogFragment(date, plans)
+            val bottomSheet = WorkoutPlansBottomSheetDialogFragment.newInstance(date, plans)
             bottomSheet.show(childFragmentManager, "WorkoutPlansBottomSheetDialogFragment")
         }
     }
