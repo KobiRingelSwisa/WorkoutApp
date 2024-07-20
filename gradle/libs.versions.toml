@@ -5,9 +5,11 @@ calendarview = "2.0.4"
 circleprogress = "1.2.1"
 circularprogressbar = "3.1.0"
 eventcalendar = "1.0.0"
+gaugelibrary = "1.0.4"
 gaugeview = "0.2.0"
 glide = "4.15.1"
 gradle = "7.0.4"
+gradleVersion = "7.0.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -62,9 +64,11 @@ calendarview = { module = "com.kizitonwose.calendarview:calendarview", version.r
 circleprogress = { module = "com.github.lzyzsd:circleprogress", version.ref = "circleprogress" }
 circularprogressbar = { module = "com.mikhaellopez:circularprogressbar", version.ref = "circularprogressbar" }
 eventcalendar = { module = "com.github.riontech-oss:EventCalendar", version.ref = "eventcalendar" }
+gaugelibrary = { module = "com.github.Pygmalios:GaugeLibrary", version.ref = "gaugelibrary" }
 gaugeview = { module = "com.github.Pygmalios:gaugeview", version.ref = "gaugeview" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+gradle-v702 = { module = "com.android.tools.build:gradle", version.ref = "gradleVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

@@ -21,12 +21,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <View
-        android:id="@+id/backgroundView"
+        android:id="@+id/backgroundViewTop"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_weight="4"
         android:background="@drawable/home_background" />
+
+    <View
+        android:id="@+id/backgroundViewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:scaleY="-1"
+        android:layout_weight="4"
+        android:background="@drawable/home_background"/>
 </RelativeLayout>
 
 
@@ -79,8 +88,8 @@
 
         <CalendarView
             android:id="@+id/calendarView"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="16dp"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
