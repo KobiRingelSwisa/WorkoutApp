@@ -1,97 +1,104 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
 
-    <View
-        android:id="@+id/backgroundView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/home_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.4"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_animation"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_centerInParent="true"
+        app:lottie_rawRes="@raw/hand"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone" />
 
 
-    <TextView
-        android:id="@+id/fitnessLevelTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fitness Level"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="401dp"
+        android:layout_height="721dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp">
 
-    <com.mikhaellopez.circularprogressbar.CircularProgressBar
-        android:id="@+id/fitnessLevelProgress"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fitnessLevelTitle"
-        app:cpb_progress="0"
-        app:cpb_progress_max="100"
-        app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_width="8dp"
-        app:cpb_background_progressbar_width="4dp"
-        app:cpb_round_border="true"
-        app:cpb_start_angle="270"
-        app:cpb_background_progressbar_color="@color/purple"/>
+        <TextView
+            android:id="@+id/fitnessLevelTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Fitness Level"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/progressPercentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0%"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toTopOf="@id/fitnessLevelProgress"
-        app:layout_constraintBottom_toBottomOf="@id/fitnessLevelProgress"
-        app:layout_constraintStart_toStartOf="@id/fitnessLevelProgress"
-        app:layout_constraintEnd_toEndOf="@id/fitnessLevelProgress" />
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/fitnessLevelProgress"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            app:cpb_background_progressbar_color="@color/purple"
+            app:cpb_background_progressbar_width="4dp"
+            app:cpb_progress="0"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progress_max="100"
+            app:cpb_progressbar_width="8dp"
+            app:cpb_round_border="true"
+            app:cpb_start_angle="270"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fitnessLevelTitle" />
 
+        <TextView
+            android:id="@+id/progressPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/fitnessLevelProgress"
+            app:layout_constraintEnd_toEndOf="@id/fitnessLevelProgress"
+            app:layout_constraintStart_toStartOf="@id/fitnessLevelProgress"
+            app:layout_constraintTop_toTopOf="@id/fitnessLevelProgress" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fitnessLevelProgress" />
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fitnessLevelProgress" />
 
-    <TextView
-        android:id="@+id/recentSessionsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recent Sessions"
-        android:textStyle="bold"
-        android:layout_marginTop="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        <TextView
+            android:id="@+id/recentSessionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Recent Sessions"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recentSessionsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recentSessionsTitle" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recentSessionsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recentSessionsTitle" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addWorkoutFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addWorkoutFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

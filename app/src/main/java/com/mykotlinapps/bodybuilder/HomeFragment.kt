@@ -23,7 +23,10 @@ import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
 import android.Manifest
 import android.app.AlertDialog
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
+import com.airbnb.lottie.LottieAnimationView
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 
@@ -36,6 +39,8 @@ class HomeFragment : Fragment() {
     private lateinit var calendarView: CalendarView
     private lateinit var recentSessionsRecyclerView: RecyclerView
     private lateinit var addWorkoutFab: FloatingActionButton
+    private lateinit var loadingAnimation: LottieAnimationView
+    private lateinit var fragmentContent: View
 
     private val workoutPlans = mapOf(
         "2023-07-19" to listOf("Workout A", "Workout B"),
@@ -60,8 +65,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -79,6 +82,16 @@ class HomeFragment : Fragment() {
         calendarView = view.findViewById(R.id.calendarView)
         recentSessionsRecyclerView = view.findViewById(R.id.recentSessionsRecyclerView)
         addWorkoutFab = view.findViewById(R.id.addWorkoutFab)
+        loadingAnimation = view.findViewById(R.id.loading_animation)
+        fragmentContent = view.findViewById(R.id.fragment_content)
+
+        // Show loading animation and hide content initially
+        showLoadingAnimation()
+
+        // Simulate loading duration
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideLoadingAnimation()
+        }, 3000) // 3 seconds delay
 
         setupCircularProgressBar()
         setupCalendar()
@@ -215,5 +228,15 @@ class HomeFragment : Fragment() {
             Plan("Workout A", "Description of Workout A"),
             Plan("Workout B", "Description of Workout B")
         )
+    }
+
+    private fun showLoadingAnimation() {
+        loadingAnimation.visibility = View.VISIBLE
+        fragmentContent.visibility = View.GONE
+    }
+
+    private fun hideLoadingAnimation() {
+        loadingAnimation.visibility = View.GONE
+        fragmentContent.visibility = View.VISIBLE
     }
 }

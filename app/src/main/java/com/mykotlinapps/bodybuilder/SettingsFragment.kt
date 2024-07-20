@@ -2,16 +2,16 @@ package com.mykotlinapps.bodybuilder
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.preference.EditTextPreference
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import com.mykotlinapps.bodybuilder.R
+import androidx.preference.Preference
+import com.airbnb.lottie.LottieAnimationView
 import com.mykotlinapps.bodybuilder.data.BodyStats
 import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 
@@ -19,60 +19,87 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     private val viewModel: ItemsViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var loadingAnimation: LottieAnimationView
+    private lateinit var preferencesContainer: View
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.preferences, rootKey)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val view = inflater.inflate(R.layout.fragment_settings, container, false)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        loadingAnimation = view.findViewById(R.id.loading_animation)
+        preferencesContainer = view.findViewById(R.id.preferences_container)
 
-        updatePreferences()
+        // Show loading animation and hide preferences initially
+        showLoadingAnimation()
 
-        viewModel.latestBodyStats.observe(this) { bodyStats ->
-            bodyStats?.let {
-                findPreference<EditTextPreference>("weight")?.text = it.weight.toString()
-                findPreference<Preference>("weight")?.summary = it.weight.toString()
-                findPreference<EditTextPreference>("bodyFat")?.text = it.bodyFat.toString()
-                findPreference<Preference>("bodyFat")?.summary = it.bodyFat.toString()
-                findPreference<EditTextPreference>("waistSize")?.text = it.waistSize.toString()
-                findPreference<Preference>("waistSize")?.summary = it.waistSize.toString()
-            }
-        }
+        // Simulate loading duration
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideLoadingAnimation()
+        }, 3000) // 3 seconds delay
+
+        // Inflate the preferences
+        childFragmentManager
+            .beginTransaction()
+            .replace(R.id.preferences_container, InnerSettingsFragment())
+            .commit()
+
+        return view
     }
 
-    private fun updatePreferences() {
-        val weight = sharedPreferences.getString("weight", "Not set")
-        val bodyFat = sharedPreferences.getString("bodyFat", "Not set")
-        val waistSize = sharedPreferences.getString("waistSize", "Not set")
-
-        findPreference<Preference>("weight")?.summary = weight
-        findPreference<Preference>("bodyFat")?.summary = bodyFat
-        findPreference<Preference>("waistSize")?.summary = waistSize
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        // Not used anymore
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == "weight" || key == "bodyFat" || key == "waistSize") {
+        // Implement logic here if needed
+    }
+
+    private fun showLoadingAnimation() {
+        loadingAnimation.visibility = View.VISIBLE
+        preferencesContainer.visibility = View.GONE
+    }
+
+    private fun hideLoadingAnimation() {
+        loadingAnimation.visibility = View.GONE
+        preferencesContainer.visibility = View.VISIBLE
+    }
+
+    class InnerSettingsFragment : PreferenceFragmentCompat() {
+
+        private lateinit var sharedPreferences: SharedPreferences
+        private val viewModel: ItemsViewModel by viewModels()
+
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.preferences, rootKey)
+
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            sharedPreferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
+                if (key == "weight" || key == "bodyFat" || key == "waistSize") {
+                    updatePreferences()
+                }
+            }
+
             updatePreferences()
+
+            viewModel.latestBodyStats.observe(this) { bodyStats ->
+                bodyStats?.let {
+                    findPreference<Preference>("weight")?.summary = it.weight.toString()
+                    findPreference<Preference>("bodyFat")?.summary = it.bodyFat.toString()
+                    findPreference<Preference>("waistSize")?.summary = it.waistSize.toString()
+                }
+            }
+        }
+
+        private fun updatePreferences() {
+            val weight = sharedPreferences.getString("weight", "Not set")
+            val bodyFat = sharedPreferences.getString("bodyFat", "Not set")
+            val waistSize = sharedPreferences.getString("waistSize", "Not set")
+
+            findPreference<Preference>("weight")?.summary = weight
+            findPreference<Preference>("bodyFat")?.summary = bodyFat
+            findPreference<Preference>("waistSize")?.summary = waistSize
         }
     }
-
-    private fun saveBodyStats() {
-        val weight = sharedPreferences.getString("weight", "0")?.toFloatOrNull() ?: 0f
-        val bodyFat = sharedPreferences.getString("bodyFat", "0")?.toFloatOrNull() ?: 0f
-        val waistSize = sharedPreferences.getString("waistSize", "0")?.toFloatOrNull() ?: 0f
-
-        val bodyStats = BodyStats(
-            weight = weight,
-            bodyFat = bodyFat,
-            waistSize = waistSize
-        )
-        viewModel.insertBodyStats(bodyStats)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-
 }
