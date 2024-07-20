@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/addItemFragment"
-        android:name="com.mykotlinapps.bodybuilder.ui.add_character.AddItemFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.add_character.AddExcerciseFragment"
         android:label="Add Item">
         <action
             android:id="@+id/action_addItemFragment_to_allItemsFragment"
@@ -61,10 +61,10 @@
         android:name="com.mykotlinapps.bodybuilder.PlansFragment"
         android:label="Workout Plans" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/workoutFragment"-->
-<!--        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"-->
-<!--        android:label="Workout" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/workoutFragment"-->
+    <!--        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"-->
+    <!--        android:label="Workout" />-->
 
     <fragment
         android:id="@+id/settingsFragment"
@@ -76,4 +76,13 @@
         android:name="com.mykotlinapps.bodybuilder.WorkoutPlanFragment"
         android:label="WorkoutPlanFragment"
         tools:layout="@layout/fragment_plans" />
+
+    <fragment
+        android:id="@+id/createWorkoutFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.add_character.CreateWorkoutFragment"
+        android:label="Create Workout">
+    <argument
+        android:name="exercise"
+        app:argType="com.mykotlinapps.bodybuilder.Exercise" />
+    </fragment>
 </navigation>

@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.mykotlinapps.bodybuilder.Exercise
 import com.mykotlinapps.bodybuilder.data.BodyStats
 import com.mykotlinapps.bodybuilder.data.Item
 import com.mykotlinapps.bodybuilder.data.local_db.ItemDataBase
@@ -16,6 +17,7 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = ItemRepository(application)
     private val bodyStatsRepository: BodyStatsRepository
+    private val exercises = mutableListOf<Exercise>()
 
     val items: LiveData<List<Item>>? = repository.getItems()
     val latestBodyStats: LiveData<BodyStats>
@@ -55,5 +57,9 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             bodyStatsRepository.insertBodyStats(bodyStats)
         }
+    }
+
+    fun addExercise(exercise: Exercise) {
+        exercises.add(exercise)
     }
 }
