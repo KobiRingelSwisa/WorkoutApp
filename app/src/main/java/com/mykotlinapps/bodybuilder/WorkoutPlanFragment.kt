@@ -16,6 +16,8 @@ class WorkoutPlanFragment : Fragment() {
 
     private var _binding: FragmentWorkoutPlanBinding? = null
     private val binding get() = _binding!!
+    private lateinit var exercisesAdapter: ExercisesAdapter
+    private val exercises = ArrayList<Exercise>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

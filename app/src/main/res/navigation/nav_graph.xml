@@ -85,4 +85,11 @@
         android:name="exercise"
         app:argType="com.mykotlinapps.bodybuilder.Exercise" />
     </fragment>
+
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.workout.WorkoutFragment"
+        android:label="Workout"
+        tools:layout="@layout/fragment_workout">
+    </fragment>
 </navigation>

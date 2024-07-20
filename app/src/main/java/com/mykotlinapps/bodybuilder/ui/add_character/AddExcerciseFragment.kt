@@ -56,35 +56,8 @@ class AddExcerciseFragment : Fragment() {
             addSetView()
         }
 
-        binding.finishBtn.setOnClickListener {
-            // Collect data from all sets
-            val sets = mutableListOf<Pair<String, String>>()
-            for (i in 0 until binding.containerReps.childCount) {
-                val setView = binding.containerReps.getChildAt(i) as LinearLayout
-                val kg = setView.findViewById<EditText>(R.id.kg_input).text.toString()
-                val reps = setView.findViewById<EditText>(R.id.reps_input).text.toString()
-                sets.add(Pair(kg, reps))
-            }
 
-            // Add exercise data to the ViewModel or next fragment
-            exercise?.let {
-                val newExercise = Exercise(
-                    bodyPart = it.bodyPart,
-                    equipment = it.equipment,
-                    gifUrl = it.gifUrl,
-                    id = it.id,
-                    name = it.name,
-                    target = it.target
-                )
 
-                viewModel.addExercise(newExercise)  // Ensure your ViewModel has this method
-            }
-            findNavController().navigate(R.id.action_addItemFragment_to_allItemsFragment)
-        }
-
-        binding.imageBtn.setOnClickListener {
-            pickImageLauncher.launch(arrayOf("image/*"))
-        }
     }
 
     private fun addSetView() {

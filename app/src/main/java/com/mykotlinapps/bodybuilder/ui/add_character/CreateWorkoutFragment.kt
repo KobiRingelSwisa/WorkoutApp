@@ -27,7 +27,9 @@ class CreateWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        exercisesAdapter = ExercisesAdapter()
+        val exercises = mutableListOf<Exercise>()
+
+        exercisesAdapter = ExercisesAdapter(exercises)
         binding.recyclerViewExercises.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = exercisesAdapter
