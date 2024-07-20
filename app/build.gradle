@@ -64,5 +64,6 @@ dependencies {
     implementation libs.androidx.room.runtime
     implementation libs.kotlinx.coroutines.core
     implementation libs.kotlinx.coroutines.android
+    implementation "com.airbnb.android:lottie:3.4.0"
 
 }
