@@ -28,8 +28,8 @@ class WorkoutsAdapter(
     override fun onBindViewHolder(holder: WorkoutTemplateViewHolder, position: Int) {
         val template = workoutTemplates[position]
         holder.nameTextView.text = template.name
-        holder.descriptionTextView.text = template.details
-        holder.itemView.setOnClickListener { onItemClick(template) }
+//        holder.descriptionTextView.text = template.name
+//        holder.itemView.setOnClickListener { onItemClick(template) }
     }
 
     override fun getItemCount() = workoutTemplates.size
