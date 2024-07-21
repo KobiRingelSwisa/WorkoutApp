@@ -2,15 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/muscleGroupButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Muscle Group"
-        android:layout_weight="1"/>
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/gold"
+        app:cornerRadius="16dp"
+        android:elevation="4dp"
+        android:padding="16dp"/>
 
     <!-- Additional TextViews if needed -->
     <TextView
