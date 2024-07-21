@@ -1,76 +1,59 @@
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
 
-
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_animation"
         android:layout_width="112dp"
         android:layout_height="112dp"
-        android:layout_centerInParent="true"
         app:lottie_rawRes="@raw/hand"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-<!--<RelativeLayout-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content">-->
-<!--&lt;!&ndash;    <View&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/backgroundViewTop"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="300dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_alignParentTop="true"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_weight="4"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/home_background" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <View&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/backgroundViewBottom"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="300dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_alignParentBottom="true"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:scaleY="-1"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_weight="4"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/home_background"/>&ndash;&gt;-->
-<!--</RelativeLayout>-->
-
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_content"
-        android:layout_width="401dp"
-        android:layout_height="721dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <View
             android:id="@+id/backgroundViewTop"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="300dp"
-            android:layout_alignParentTop="true"
-            android:layout_weight="4"
-            android:background="@drawable/home_background" />
+            android:background="@drawable/home_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <View
             android:id="@+id/backgroundViewBottom"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="300dp"
-            android:layout_alignParentBottom="true"
             android:scaleY="-1"
-            android:layout_weight="4"
-            android:background="@drawable/home_background"/>
+            android:background="@drawable/home_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/fitnessLevelTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Fitness Level"
             android:textStyle="bold"
-            android:layout_alignParentTop="true" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
             android:id="@+id/fitnessLevelProgress"
@@ -86,24 +69,20 @@
             app:cpb_round_border="true"
             app:cpb_start_angle="270"
             android:background="@color/white"
-            android:layout_below="@id/fitnessLevelTitle"
-            android:layout_centerHorizontal="true" />
+            app:layout_constraintTop_toBottomOf="@id/fitnessLevelTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/progressPercentage"
             android:layout_width="47dp"
             android:layout_height="40dp"
-            android:layout_alignTop="@id/fitnessLevelProgress"
-            android:layout_alignEnd="@id/fitnessLevelProgress"
-            android:layout_alignBottom="@id/fitnessLevelProgress"
-            android:layout_marginStart="-54dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="12dp"
-            android:layout_toEndOf="@+id/fitnessLevelProgress"
             android:text="0%"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="@id/fitnessLevelProgress"
+            app:layout_constraintBottom_toBottomOf="@id/fitnessLevelProgress"
+            app:layout_constraintStart_toEndOf="@id/fitnessLevelProgress" />
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -111,8 +90,42 @@
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
             android:background="@color/white"
-            android:layout_below="@id/fitnessLevelProgress"
-            android:layout_centerHorizontal="true" />
+            app:layout_constraintTop_toBottomOf="@id/fitnessLevelProgress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Embedded Plans for Day Content -->
+        <LinearLayout
+            android:id="@+id/plansForDayLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/calendarView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plans for "
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/plansRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnHide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Hide" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/recentSessionsTitle"
@@ -121,15 +134,18 @@
             android:layout_marginTop="0dp"
             android:text="Recent Sessions"
             android:textStyle="bold"
-            android:layout_below="@id/calendarView"
-            android:layout_alignParentStart="true" />
+            app:layout_constraintTop_toBottomOf="@id/plansForDayLayout"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recentSessionsRecyclerView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_below="@id/recentSessionsTitle" />
+            app:layout_constraintTop_toBottomOf="@id/recentSessionsTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addWorkoutFab"
@@ -138,9 +154,9 @@
             android:layout_margin="16dp"
             android:backgroundTint="#FE0000"
             android:src="@drawable/ic_add"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

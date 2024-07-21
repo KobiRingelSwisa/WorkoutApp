@@ -1,13 +1,15 @@
 package com.mykotlinapps.bodybuilder
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.mykotlinapps.bodybuilder.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -47,5 +49,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.homeFragment)
             }
         }
+
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
 }

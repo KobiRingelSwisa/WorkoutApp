@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -22,11 +22,14 @@ import com.mykotlinapps.bodybuilder.databinding.BottomSheetAddWorkoutBinding
 import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
 import android.Manifest
-import android.app.AlertDialog
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import com.airbnb.lottie.LottieAnimationView
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.adapter.RecentSessionsAdapter
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 import com.mykotlinapps.bodybuilder.data.Workout
@@ -42,10 +45,20 @@ class HomeFragment : Fragment() {
     private lateinit var addWorkoutFab: FloatingActionButton
     private lateinit var loadingAnimation: LottieAnimationView
     private lateinit var fragmentContent: View
+    private lateinit var plansForDayLayout: LinearLayout
+    private lateinit var plansRecyclerView: RecyclerView
+    private lateinit var btnHide: Button
+    private lateinit var title: TextView
 
     private val workoutPlans = mapOf(
-        "2023-07-19" to listOf("Workout A", "Workout B"),
-        "2023-07-20" to listOf("Workout C", "Workout D")
+        "2023-07-19" to listOf(
+            Plan("Workout A", "Description of Workout A"),
+            Plan("Workout B", "Description of Workout B")
+        ),
+        "2023-07-20" to listOf(
+            Plan("Workout C", "Description of Workout C"),
+            Plan("Workout D", "Description of Workout D")
+        )
     )
 
     // Initialize the requestCameraPermissionLauncher in the Fragment
@@ -85,6 +98,10 @@ class HomeFragment : Fragment() {
         addWorkoutFab = view.findViewById(R.id.addWorkoutFab)
         loadingAnimation = view.findViewById(R.id.loading_animation)
         fragmentContent = view.findViewById(R.id.fragment_content)
+        plansForDayLayout = binding.plansForDayLayout
+        plansRecyclerView = binding.plansRecyclerView
+        btnHide = binding.btnHide
+        title = binding.title
 
         // Show loading animation and hide content initially
         showLoadingAnimation()
@@ -98,6 +115,7 @@ class HomeFragment : Fragment() {
         setupCalendar()
         setupRecentSessions()
         setupAddWorkoutFab()
+        setupPlansForDay()
     }
 
     private fun setupCircularProgressBar() {
@@ -116,8 +134,7 @@ class HomeFragment : Fragment() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val date = "$year-${month + 1}-$dayOfMonth"
             val plans = workoutPlans[date] ?: emptyList()
-            val bottomSheet = AddActionBottomSheetDialogFragment.newInstance(date, plans)
-            bottomSheet.show(childFragmentManager, "WorkoutPlansBottomSheetDialogFragment")
+            showPlansForDay(date, plans)
         }
     }
 
@@ -204,23 +221,16 @@ class HomeFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun showPlansForDayDialog(date: Date) {
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_plans_for_day, null)
-        val dialogTitle = dialogView.findViewById<TextView>(R.id.title)
-        val plansRecyclerView = dialogView.findViewById<RecyclerView>(R.id.plansRecyclerView)
+    private fun showPlansForDay(date: String, plans: List<Plan>) {
+        title.text = "Plans for $date"
+        plansRecyclerView.adapter = PlansAdapter(plans)
+        plansForDayLayout.visibility = View.VISIBLE
+    }
 
-        dialogTitle.text = "Plans for ${date.toLocaleString()}"
-
-        plansRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        plansRecyclerView.adapter = PlansAdapter(getPlansForDate(date))
-
-        AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .setPositiveButton("Close") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-            .show()
+    private fun setupPlansForDay() {
+        btnHide.setOnClickListener {
+            plansForDayLayout.visibility = View.GONE
+        }
     }
 
     private fun getPlansForDate(date: Date): List<Plan> {

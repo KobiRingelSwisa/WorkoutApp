@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -10,15 +10,16 @@ import android.view.ViewGroup
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mykotlinapps.bodybuilder.User
 //import com.mykotlinapps.bodybuilder.data.User
-import com.mykotlinapps.bodybuilder.data.Workout
+import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 import com.mykotlinapps.bodybuilder.databinding.FragmentPlansBinding
+import com.mykotlinapps.bodybuilder.data.adapter.WorkoutsAdapter
 
 class PlansFragment : Fragment() {
 
@@ -50,10 +51,6 @@ class PlansFragment : Fragment() {
         }, 3000) // 3 seconds delay
 
         setupRecyclerView()
-
-        binding.generateWorkout.setOnClickListener {
-            findNavController().navigate(R.id.action_plansFragment_to_generateWorkoutFragment)
-        }
     }
 
     private fun setupRecyclerView() {
@@ -68,7 +65,7 @@ class PlansFragment : Fragment() {
 
                 binding.exerciseRecyclerView.apply {
                     layoutManager = LinearLayoutManager(context)
-                    adapter = WorkoutTemplateAdapter(workouts) { workout ->
+                    adapter = WorkoutsAdapter(workouts) { workout ->
                         showTemplateDetails(workout)
                     }
                 }
@@ -92,7 +89,7 @@ class PlansFragment : Fragment() {
         }
     }
 
-    private fun showTemplateDetails(template: Workout) {
+    private fun showTemplateDetails(template: WorkoutTemplate) {
         // Show detailed information about the selected template
     }
 

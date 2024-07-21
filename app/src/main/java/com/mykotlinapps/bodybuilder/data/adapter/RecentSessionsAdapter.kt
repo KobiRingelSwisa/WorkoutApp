@@ -1,10 +1,11 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.data.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.data.Workout
 import java.text.SimpleDateFormat
 import java.util.Locale

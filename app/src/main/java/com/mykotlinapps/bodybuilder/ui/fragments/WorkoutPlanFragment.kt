@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mykotlinapps.bodybuilder.data.Exercise
+import com.mykotlinapps.bodybuilder.data.adapter.ExercisesAdapter
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlanBinding

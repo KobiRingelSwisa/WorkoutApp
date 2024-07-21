@@ -1,10 +1,11 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.mykotlinapps.bodybuilder.data.adapter.WorkoutPlansAdapter
 import com.mykotlinapps.bodybuilder.databinding.DialogPlansForDayBinding
 
 class AddActionBottomSheetDialogFragment() : BottomSheetDialogFragment() {
@@ -19,14 +20,6 @@ class AddActionBottomSheetDialogFragment() : BottomSheetDialogFragment() {
         private const val ARG_DATE = "date"
         private const val ARG_WORKOUT_PLANS = "workout_plans"
 
-        fun newInstance(date: String, workoutPlans: List<String>): AddActionBottomSheetDialogFragment {
-            val fragment = AddActionBottomSheetDialogFragment()
-            val args = Bundle()
-            args.putString(ARG_DATE, date)
-            args.putStringArrayList(ARG_WORKOUT_PLANS, ArrayList(workoutPlans))
-            fragment.arguments = args
-            return fragment
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

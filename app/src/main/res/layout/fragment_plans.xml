@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlansFragment">
+    tools:context=".ui.fragments.PlansFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_animation"
@@ -127,7 +127,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/communityWorkoutsTitle" />
 
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/communityWorkoutsRecyclerViewEmptyText"
+            android:text="exe"
+            android:id="@+id/exe_btn"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

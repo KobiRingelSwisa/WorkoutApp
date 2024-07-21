@@ -1,16 +1,17 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.data.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mykotlinapps.bodybuilder.data.Workout
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 
-class WorkoutTemplateAdapter(
-    private val workouts: List<Workout>,
-    private val onItemClick: (Workout) -> Unit
-) : RecyclerView.Adapter<WorkoutTemplateAdapter.WorkoutTemplateViewHolder>() {
+class WorkoutsAdapter(
+    private val workoutTemplates: List<WorkoutTemplate>,
+    private val onItemClick: (WorkoutTemplate) -> Unit
+) : RecyclerView.Adapter<WorkoutsAdapter.WorkoutTemplateViewHolder>() {
 
     class WorkoutTemplateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.templateName)
@@ -24,11 +25,11 @@ class WorkoutTemplateAdapter(
     }
 
     override fun onBindViewHolder(holder: WorkoutTemplateViewHolder, position: Int) {
-        val workout = workouts[position]
-        holder.nameTextView.text = workout.name
-        holder.descriptionTextView.text = workout.duration
-//        holder.itemView.setOnClickListener { onItemClick(workout) }
+        val template = workoutTemplates[position]
+        holder.nameTextView.text = template.name
+        holder.descriptionTextView.text = template.details
+        holder.itemView.setOnClickListener { onItemClick(template) }
     }
 
-    override fun getItemCount() = workouts.size
+    override fun getItemCount() = workoutTemplates.size
 }
