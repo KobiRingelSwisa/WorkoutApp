@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.android.material.snackbar.Snackbar
 import com.mykotlinapps.bodybuilder.databinding.FragmentSignInBinding
-
 
 class SignInFragment : Fragment() {
 
@@ -37,6 +35,9 @@ class SignInFragment : Fragment() {
             // Hide the keyboard
             requireContext().hideKeyboard(view)
 
+            // Hide the error message
+            binding.tvError.visibility = View.GONE
+
             signInUser(email, password)
         }
 
@@ -51,8 +52,8 @@ class SignInFragment : Fragment() {
                 if (task.isSuccessful) {
                     findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
                 } else {
-                    // Sign in failed
-                    Snackbar.make(binding.root, "Authentication failed: ${task.exception?.message}", Snackbar.LENGTH_LONG).show()
+                    // Sign in failed, show error message
+                    binding.tvError.visibility = View.VISIBLE
                 }
             }
     }
@@ -62,4 +63,3 @@ class SignInFragment : Fragment() {
         _binding = null
     }
 }
-
