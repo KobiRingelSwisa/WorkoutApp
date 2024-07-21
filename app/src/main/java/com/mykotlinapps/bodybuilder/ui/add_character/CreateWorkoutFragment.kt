@@ -43,8 +43,11 @@ class CreateWorkoutFragment : Fragment() {
                 gifUrl = "http://example.com/image.gif",
                 id = "12345",
                 name = "Squats",
-                target = "quads"
+                target = "quads",
+                instructions = listOf("Do 10 squats", "bla"),
+                secondaryMuscles = listOf("legs")
             )
+
             exercisesAdapter.addExercise(defaultExercise)
         }
     }

@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_analytics"
         android:title="Analytics" />
     <item
-        android:id="@+id/workoutPlansFragment"
+        android:id="@+id/PlansFragment"
         android:icon="@drawable/ic_workout"
         android:title="Plans" />
     <item

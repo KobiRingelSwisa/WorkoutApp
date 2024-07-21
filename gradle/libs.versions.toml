@@ -5,12 +5,18 @@ artifactid = "version"
 calendarview = "2.0.4"
 circleprogress = "1.2.1"
 circularprogressbar = "3.1.0"
+compiler = "4.15.1"
+converterGson = "2.9.0"
+databindingRuntime = "8.5.1"
 eventcalendar = "1.0.0"
+firebaseBom = "33.1.2"
 gaugelibrary = "1.0.4"
 gaugeview = "0.2.0"
 glide = "4.15.1"
+glideVersion = "4.16.0"
 gradle = "7.0.4"
 gradleVersion = "7.0.2"
+gson = "2.10.1"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -31,6 +37,7 @@ materialCalendarViewVersion = "1.7.0"
 navigationFragmentKtx = "2.7.7"
 preference = "1.2.1"
 recyclerview = "1.3.2"
+retrofit = "2.11.0"
 roomCompiler = "2.0.20-Beta2"
 roomCompilerVersion = "2.5.1"
 roomRuntime = "2.6.1"
@@ -46,6 +53,7 @@ firebaseFirestoreKtx = "25.0.0"
 [libraries]
 androidsvg = { module = "com.caverock:androidsvg", version.ref = "androidsvg" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-databinding-runtime = { module = "androidx.databinding:databinding-runtime", version.ref = "databindingRuntime" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
@@ -65,12 +73,18 @@ artifactid = { module = "groupId:artifactId", version.ref = "artifactid" }
 calendarview = { module = "com.kizitonwose.calendarview:calendarview", version.ref = "calendarview" }
 circleprogress = { module = "com.github.lzyzsd:circleprogress", version.ref = "circleprogress" }
 circularprogressbar = { module = "com.mikhaellopez:circularprogressbar", version.ref = "circularprogressbar" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 eventcalendar = { module = "com.github.riontech-oss:EventCalendar", version.ref = "eventcalendar" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 gaugelibrary = { module = "com.github.Pygmalios:GaugeLibrary", version.ref = "gaugelibrary" }
 gaugeview = { module = "com.github.Pygmalios:gaugeview", version.ref = "gaugeview" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-v4160 = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 gradle-v702 = { module = "com.android.tools.build:gradle", version.ref = "gradleVersion" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -85,6 +99,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material-calendar-view = { module = "com.applandeo:material-calendar-view", version.ref = "materialCalendarViewVersion" }
 material-calendarview = { module = "com.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 speedviewlib = { module = "com.github.anastr:speedviewlib", version.ref = "speedviewlib" }
 androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 weekview = { module = "com.alamkanak:weekview", version.ref = "weekview" }

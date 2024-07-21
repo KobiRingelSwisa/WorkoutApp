@@ -17,6 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BodyBuilder"
         tools:targetApi="31">
+        <activity android:name=".ui.ExerciseDetailActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
