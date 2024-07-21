@@ -1,25 +1,39 @@
 package com.mykotlinapps.bodybuilder
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Picture
+import android.graphics.drawable.PictureDrawable
 import android.util.AttributeSet
-import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
+import com.caverock.androidsvg.R.attr.svg
 import com.caverock.androidsvg.SVG
+import com.caverock.androidsvg.SVGParseException
 
-class SVGImageView(context: Context, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatImageView(context, attrs) {
+class SVGImageView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
+) : AppCompatImageView(context, attrs, defStyle) {
+
     private var svg: SVG? = null
 
     fun setSVG(resourceId: Int) {
-        svg = SVG.getFromResource(context, resourceId)
-        invalidate()
+        try {
+            val inputStream = resources.openRawResource(resourceId)
+            val svg = SVG.getFromInputStream(inputStream)
+            val drawable = PictureDrawable(svg.renderToPicture())
+            setImageDrawable(drawable)
+            inputStream.close()  // Don't forget to close the InputStream
+        } catch (e: SVGParseException) {
+            e.printStackTrace()
+        }
     }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        svg?.let {
-            val picture: Picture = it.renderToPicture()
-            canvas.drawPicture(picture)
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        if (svg != null) {
+            val aspectRatio = svg!!.documentAspectRatio
+            val width = MeasureSpec.getSize(widthMeasureSpec)
+            val height = (width / aspectRatio).toInt()
+            setMeasuredDimension(width, height)
+        } else {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
     }
 }
