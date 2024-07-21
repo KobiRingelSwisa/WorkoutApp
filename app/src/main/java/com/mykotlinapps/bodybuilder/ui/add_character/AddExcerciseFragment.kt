@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.mykotlinapps.bodybuilder.Exercise
+import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.databinding.AddExcerciseLayoutBinding
 import com.mykotlinapps.bodybuilder.ui.ItemsViewModel

@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mykotlinapps.bodybuilder.Exercise
+import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.data.BodyStats
 import com.mykotlinapps.bodybuilder.data.Item
 import com.mykotlinapps.bodybuilder.data.local_db.ItemDataBase

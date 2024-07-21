@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.data
 
 import android.os.Parcel
 import android.os.Parcelable

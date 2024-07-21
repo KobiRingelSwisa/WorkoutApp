@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder.ui.workout
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mykotlinapps.bodybuilder.Exercise
-import com.mykotlinapps.bodybuilder.ExercisesAdapter
+import com.mykotlinapps.bodybuilder.data.Exercise
+import com.mykotlinapps.bodybuilder.data.adapter.ExercisesAdapter
 import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutBinding
 
 class WorkoutFragment : Fragment() {

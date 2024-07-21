@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import android.widget.ScrollView
+import androidx.navigation.fragment.findNavController
+import com.mykotlinapps.bodybuilder.MuscleGroupAdapter
+import com.mykotlinapps.bodybuilder.MuscleGroupPerformance
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.databinding.FragmentAnalyticsBinding
 
 //class AnalyticsFragment : Fragment() {
@@ -139,8 +143,12 @@ class AnalyticsFragment : Fragment() {
     }
 
     private fun openAnalyticsWindow(muscleGroup: MuscleGroupPerformance) {
-        // Handle opening analytics window for the chosen muscle group
-        // For example, navigate to another fragment and pass the muscle group data
+        val bundle = Bundle().apply {
+            putString("muscleGroup", muscleGroup.muscleGroup)
+            putString("performance", muscleGroup.performance)
+            putString("insights", muscleGroup.insights)
+        }
+        findNavController().navigate(R.id.action_analyticsFragment_to_muscleGroupDetailFragment, bundle)
     }
 
     private fun showLoadingAnimation() {

@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -27,6 +27,9 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import com.airbnb.lottie.LottieAnimationView
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.adapter.RecentSessionsAdapter
+import com.mykotlinapps.bodybuilder.data.WorkoutSession
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 

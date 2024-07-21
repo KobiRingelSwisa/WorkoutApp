@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -14,6 +14,7 @@ import androidx.preference.Preference
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
 import androidx.navigation.fragment.findNavController
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {

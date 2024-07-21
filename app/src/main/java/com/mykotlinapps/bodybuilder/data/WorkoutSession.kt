@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.data
 
 import android.view.LayoutInflater
 import android.view.View

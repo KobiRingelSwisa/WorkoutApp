@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.android.material.snackbar.Snackbar
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.User
+import com.mykotlinapps.bodybuilder.UserDetails
 import com.mykotlinapps.bodybuilder.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {

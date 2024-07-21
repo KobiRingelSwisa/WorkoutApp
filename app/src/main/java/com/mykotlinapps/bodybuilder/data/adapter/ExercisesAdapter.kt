@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.data.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
+import com.mykotlinapps.bodybuilder.data.Exercise
+import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.Set
 import com.mykotlinapps.bodybuilder.databinding.AddExcerciseLayoutBinding
 
 class ExercisesAdapter(private val exercises: MutableList<Exercise>) : RecyclerView.Adapter<ExercisesAdapter.ExerciseViewHolder>() {
