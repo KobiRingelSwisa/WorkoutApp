@@ -1,6 +1,5 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Environment
@@ -23,6 +22,7 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.GsonBuilder
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
 import java.io.File
 import java.io.FileWriter
