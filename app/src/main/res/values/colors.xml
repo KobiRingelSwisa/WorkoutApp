@@ -7,4 +7,6 @@
     <color name="red">#FF0000</color>
     <color name="blue">#00008B</color>
     <color name="background">#F5F5F5</color>
+    <color name="hint_color">#FF999999</color>
+    <color name="dark_gray">#FF333333</color>
 </resources>

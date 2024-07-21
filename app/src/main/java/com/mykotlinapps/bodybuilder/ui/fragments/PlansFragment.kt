@@ -6,12 +6,15 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.data.adapter.WorkoutsAdapter
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 import com.mykotlinapps.bodybuilder.databinding.FragmentPlansBinding
@@ -46,6 +49,11 @@ class PlansFragment : Fragment() {
         }, 3000) // 3 seconds delay
 
         setupRecyclerView()
+
+        val button = view.findViewById<Button>(R.id.exe_btn)
+        button.setOnClickListener {
+            findNavController().navigate(R.id.action_PlansFragment_to_ExercisesDBFragment)
+        }
     }
 
     private fun setupRecyclerView() {

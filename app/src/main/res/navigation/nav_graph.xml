@@ -43,7 +43,7 @@
 
         <action
             android:id="@+id/action_homeFragment_to_workoutPlansFragment"
-            app:destination="@id/workoutPlansFragment" />
+            app:destination="@id/PlansFragment" />
 
 
 
@@ -87,10 +87,19 @@
     </fragment>
 
     <fragment
-        android:id="@+id/workoutPlansFragment"
+        android:id="@+id/PlansFragment"
         android:name="com.mykotlinapps.bodybuilder.ui.fragments.PlansFragment"
-        android:label="Workout Plans" />
+        android:label="Workout Plans" >
+    <action
+        android:id="@+id/action_PlansFragment_to_ExercisesDBFragment"
+        app:destination="@id/ExercisesDBFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/ExercisesDBFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.fragments.ExercisesDBFragment"
+        android:label="Detail Item">
+    </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/workoutFragment"-->
     <!--        android:name="com.mykotlinapps.bodybuilder.WorkoutFragment"-->

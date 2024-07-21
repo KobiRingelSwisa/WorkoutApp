@@ -5,10 +5,11 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mykotlinapps.bodybuilder.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
+import androidx.fragment.app.commit
+import com.mykotlinapps.bodybuilder.ui.fragments.ExercisesDBFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bottomNavigationView.setupWithNavController(navController)
-    }
 
+
+    }
 }
