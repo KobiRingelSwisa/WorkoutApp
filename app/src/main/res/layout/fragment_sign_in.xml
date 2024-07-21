@@ -19,6 +19,14 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password or Email is incorrect"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
