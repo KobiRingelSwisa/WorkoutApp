@@ -27,7 +27,7 @@ class WorkoutsAdapter(
     override fun onBindViewHolder(holder: WorkoutTemplateViewHolder, position: Int) {
         val template = workoutTemplates[position]
         holder.nameTextView.text = template.name
-        holder.descriptionTextView.text = template.description
+        holder.descriptionTextView.text = template.details
         holder.itemView.setOnClickListener { onItemClick(template) }
     }
 

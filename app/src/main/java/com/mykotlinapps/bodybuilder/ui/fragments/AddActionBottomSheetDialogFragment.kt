@@ -20,14 +20,6 @@ class AddActionBottomSheetDialogFragment() : BottomSheetDialogFragment() {
         private const val ARG_DATE = "date"
         private const val ARG_WORKOUT_PLANS = "workout_plans"
 
-        fun newInstance(date: String, workoutPlans: List<String>): AddActionBottomSheetDialogFragment {
-            val fragment = AddActionBottomSheetDialogFragment()
-            val args = Bundle()
-            args.putString(ARG_DATE, date)
-            args.putStringArrayList(ARG_WORKOUT_PLANS, ArrayList(workoutPlans))
-            fragment.arguments = args
-            return fragment
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -124,7 +124,7 @@
     </fragment>
     <fragment
         android:id="@+id/muscleGroupDetailFragment"
-        android:name="com.mykotlinapps.bodybuilder.ui.fragments.MuscleGroupDetailFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.fragments.MuscleGroupDetailBottomSheetFragment"
         android:label="Muscle Group Detail" />
 
 

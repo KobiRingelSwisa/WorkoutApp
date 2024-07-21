@@ -35,17 +35,8 @@ class DetailItemFragment: Fragment() {
             binding.itemDesc.text = it.bodyPart
             Glide.with(requireContext()).load(it.gifUrl).circleCrop().into(binding.itemImg)
         }
-//        arguments?.getInt("item").let {
-//            it?.let {
-//                val item = ItemManager.items[it]
-//
-//                binding.itemTitle.text = item.title
-//                binding.itemDesc.text = item.description
-//                Glide.with(requireContext()).load(item.photo).circleCrop().into(binding.itemImg)
-//
-//            }
-//        }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

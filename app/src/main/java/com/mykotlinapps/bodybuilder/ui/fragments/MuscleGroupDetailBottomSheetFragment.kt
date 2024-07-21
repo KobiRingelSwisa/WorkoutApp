@@ -4,16 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mykotlinapps.bodybuilder.data.adapter.WorkoutsAdapter
 import com.mykotlinapps.bodybuilder.databinding.FragmentMuscleGroupDetailBinding
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 
-class MuscleGroupDetailFragment : Fragment() {
+class MuscleGroupDetailBottomSheetFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentMuscleGroupDetailBinding? = null
     private val binding get() = _binding!!
+
+    // Define the workouts list
+    private val workouts: List<WorkoutTemplate> = listOf(
+        WorkoutTemplate("Push-ups", "3 sets of 15 reps"),
+        WorkoutTemplate("Bench Press", "4 sets of 10 reps"),
+        WorkoutTemplate("Chest Fly", "3 sets of 12 reps")
+        // Add more workout templates as needed
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,21 +34,15 @@ class MuscleGroupDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val muscleGroup = arguments?.getString("muscleGroup") ?: return
+        val muscleGroupName = arguments?.getString("muscleGroupName") ?: return
         val performance = arguments?.getString("performance") ?: return
         val insights = arguments?.getString("insights") ?: return
 
-        binding.muscleGroupTitle.text = muscleGroup
+        binding.muscleGroupTitle.text = muscleGroupName
         binding.performanceTextView.text = performance
         binding.insightsTextView.text = insights
 
-        // Setup RecyclerView for workouts (dummy data for now)
-        val workouts = listOf(
-            WorkoutTemplate("Workout 1", "Description 1"),
-            WorkoutTemplate("Workout 2", "Description 2"),
-            WorkoutTemplate("Workout 3", "Description 3")
-        )
-
+        // Set up the RecyclerView with the workouts adapter
         binding.workoutsRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.workoutsRecyclerView.adapter = WorkoutsAdapter(workouts) { template ->
             // Handle item click if necessary
@@ -50,5 +52,19 @@ class MuscleGroupDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TAG = "MuscleGroupDetailBottomSheet"
+
+        fun newInstance(muscleGroupName: String, performance: String, insights: String): MuscleGroupDetailBottomSheetFragment {
+            val fragment = MuscleGroupDetailBottomSheetFragment()
+            val args = Bundle()
+            args.putString("muscleGroupName", muscleGroupName)
+            args.putString("performance", performance)
+            args.putString("insights", insights)
+            fragment.arguments = args
+            return fragment
+        }
     }
 }
