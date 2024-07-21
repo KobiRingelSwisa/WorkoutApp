@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.Workout
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 
 class WorkoutsAdapter(
-    private val workoutTemplates: List<WorkoutTemplate>,
+    private val workoutTemplates: List<Workout>,
     private val onItemClick: (WorkoutTemplate) -> Unit
 ) : RecyclerView.Adapter<WorkoutsAdapter.WorkoutTemplateViewHolder>() {
 
