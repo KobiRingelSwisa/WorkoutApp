@@ -29,6 +29,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.airbnb.lottie.LottieAnimationView
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
+import com.mykotlinapps.bodybuilder.data.Workout
 
 class HomeFragment : Fragment() {
 
@@ -125,12 +126,13 @@ class HomeFragment : Fragment() {
         recentSessionsRecyclerView.adapter = RecentSessionsAdapter(getRecentSessions())
     }
 
-    private fun getRecentSessions(): List<WorkoutSession> {
+    private fun getRecentSessions(): List<Workout> {
         // Fetch recent sessions from a data source
         return listOf(
-            WorkoutSession("Morning Run", "30 min", Date()),
-            WorkoutSession("Evening Yoga", "45 min", Date())
+            Workout("Morning Run", "30 min", Date()),
+            Workout("Evening Yoga", "45 min", Date())
         )
+
     }
 
     private fun setupAddWorkoutFab() {

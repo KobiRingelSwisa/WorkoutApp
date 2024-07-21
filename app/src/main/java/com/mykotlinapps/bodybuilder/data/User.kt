@@ -1,21 +1,15 @@
 package com.mykotlinapps.bodybuilder
 
-data class UserDetails(
-    val fullName: String = "",
-    val email: String = "",
-    val heightInCm: Int = 0,
-    val weightInKg: Int = 0,
-    val gender: String = "",
-    val age: Int = 0
-)
+import com.mykotlinapps.bodybuilder.data.Exercise
+import com.mykotlinapps.bodybuilder.data.UserDetails
+import com.mykotlinapps.bodybuilder.data.Workout
+import java.util.Date
 
-data class Analytics(
-    val someMetric: Int = 0
-
-    // Add other fields as necessary
-)
 
 data class User(
     val userDetails: UserDetails = UserDetails(),
-    val analytics: Analytics = Analytics()
-)
+    val analytics: Analytics = Analytics(),
+    val workouts: List<Workout> = emptyList()
+) {
+    constructor() : this(UserDetails(), Analytics(), emptyList())
+}

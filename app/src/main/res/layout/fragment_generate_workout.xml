@@ -26,21 +26,22 @@
                 android:id="@+id/btnAddExercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Exercise"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="Add Exercise" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvExercises"
+            <LinearLayout
+                android:id="@+id/exercisesContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
 
             <Button
                 android:id="@+id/btnSaveWorkout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save Workout"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="Save Workout" />
 
         </LinearLayout>
     </ScrollView>

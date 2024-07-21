@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etBodyPart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Body Part"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etEquipment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Equipment"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID"
+        android:inputType="text"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etTarget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Target"
+        android:inputType="text" />
+</LinearLayout>

@@ -1,15 +1,15 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.data
 
 import android.os.Parcel
 import android.os.Parcelable
 
 data class Exercise(
-    val bodyPart: String,
-    val equipment: String,
-    val gifUrl: String,
-    val id: String,
-    val name: String,
-    val target: String
+    val bodyPart: String = "",
+    val equipment: String = "",
+    val gifUrl: String = "",
+    val id: String = "",
+    val name: String = "",
+    val target: String = ""
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",

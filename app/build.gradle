@@ -74,6 +74,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     implementation 'com.google.firebase:firebase-firestore-ktx:23.0.4'
     implementation libs.androidsvg
+    implementation 'com.google.code.gson:gson:2.8.8'
 
 
 }

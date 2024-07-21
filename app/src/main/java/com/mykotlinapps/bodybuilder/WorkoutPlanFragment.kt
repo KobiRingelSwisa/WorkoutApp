@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 import com.mykotlinapps.bodybuilder.databinding.FragmentWorkoutPlanBinding
@@ -16,7 +16,7 @@ class WorkoutPlanFragment : Fragment() {
 
     private var _binding: FragmentWorkoutPlanBinding? = null
     private val binding get() = _binding!!
-    private lateinit var exercisesAdapter: ExercisesAdapter
+//    private lateinit var exercisesAdapter: ExercisesAdapter
     private val exercises = ArrayList<Exercise>()
 
     override fun onCreateView(
