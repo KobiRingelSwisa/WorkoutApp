@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_generateWorkoutFragment_to_plansFragment"
             app:destination="@id/plansFragment" />
+        <action
+            android:id="@+id/action_generateWorkoutFragment_to_ExercisesDBFragment"
+            app:destination="@id/ExercisesDBFragment" />
     </fragment>
 
 

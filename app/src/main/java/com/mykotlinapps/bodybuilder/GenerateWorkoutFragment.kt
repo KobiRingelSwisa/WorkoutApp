@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -56,9 +57,14 @@ class GenerateWorkoutFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        binding.btnAddExercise.setOnClickListener {
-            showAddExerciseDialog()
+//        binding.btnAddExercise.setOnClickListener {
+//            showAddExerciseDialog()
+//        }
+        val button = view.findViewById<Button>(R.id.exe_btn)
+        button.setOnClickListener {
+            findNavController().navigate(R.id.action_generateWorkoutFragment_to_ExercisesDBFragment)
         }
+
 
         binding.btnSaveWorkout.setOnClickListener {
             saveWorkout()
