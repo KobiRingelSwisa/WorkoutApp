@@ -49,14 +49,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add_workout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_add"
-            app:layout_constraintBottom_toBottomOf="@id/exerciseRecyclerView"
-            app:layout_constraintEnd_toEndOf="@id/exerciseRecyclerView" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab_add_workout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="16dp"-->
+<!--            android:src="@drawable/ic_add"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/exerciseRecyclerView"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/exerciseRecyclerView" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exerciseRecyclerView"

@@ -23,6 +23,9 @@ import com.mykotlinapps.bodybuilder.User
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 import com.mykotlinapps.bodybuilder.databinding.FragmentPlansBinding
 import com.mykotlinapps.bodybuilder.data.adapter.WorkoutsAdapter
+import androidx.recyclerview.widget.ItemTouchHelper
+import java.util.UUID
+
 
 class PlansFragment : Fragment() {
 
@@ -30,6 +33,7 @@ class PlansFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var loadingAnimation: LottieAnimationView
     private lateinit var fragmentContent: ScrollView
+    private lateinit var adapter: WorkoutsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,22 +76,52 @@ class PlansFragment : Fragment() {
         db.collection("users").document(userId).get()
             .addOnSuccessListener { document ->
                 val user = document.toObject(User::class.java)
-                val workouts = user?.workouts ?: emptyList()
+                val workouts = user?.workouts ?: mutableListOf()
 
+                adapter = WorkoutsAdapter(workouts.toMutableList()) { workout ->
+                    Log.d("Workout", workout.name.toString())
+                    showTemplateDetails(workout)
+                }
                 binding.exerciseRecyclerView.apply {
                     layoutManager = LinearLayoutManager(context)
-                    adapter = WorkoutsAdapter(workouts) { workout ->
-                        showTemplateDetails(workout)
-                    }
+                    adapter = this@PlansFragment.adapter
                 }
 
                 showEmptyState(binding.exerciseRecyclerView, binding.exerciseRecyclerViewEmptyText, workouts.isEmpty())
+
+                // Attach ItemTouchHelper to RecyclerView
+                val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
+                itemTouchHelper.attachToRecyclerView(binding.exerciseRecyclerView)
             }
             .addOnFailureListener { exception ->
                 // Handle any errors here
                 Log.e("FirestoreError", "Error fetching workouts", exception)
                 showEmptyState(binding.exerciseRecyclerView, binding.exerciseRecyclerViewEmptyText, true)
             }
+    }
+
+    private val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.bindingAdapterPosition
+            Log.d("position",position.toString())
+            if (position != RecyclerView.NO_POSITION) {
+                val workout = adapter.workoutTemplates[position]
+                val workoutId = UUID.fromString(workout.id) // Convert back to UUID if needed
+                adapter.removeItem(position)
+                // Optionally, you can remove the item from Firestore here as well
+                val db = FirebaseFirestore.getInstance()
+                val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+                db.collection("users").document(userId).update("workouts", adapter.workoutTemplates)
+            }
+        }
     }
 
     private fun showEmptyState(recyclerView: RecyclerView, emptyTextView: TextView, isEmpty: Boolean) {
@@ -117,5 +151,5 @@ class PlansFragment : Fragment() {
     private fun hideLoadingAnimation() {
         loadingAnimation.visibility = View.GONE
         fragmentContent.visibility = View.VISIBLE
-        }
+    }
 }
