@@ -142,8 +142,8 @@ class HomeFragment : Fragment() {
 
     private fun getRecentSessions(): List<Workout> {
         return listOf(
-            Workout("Morning Run", "30 min", Date()),
-            Workout("Evening Yoga", "45 min", Date())
+            Workout(name = "Morning Run", duration = "30 min", date =  Date()),
+            Workout(name = "Evening Yoga", duration ="45 min", date = Date())
         )
     }
 
