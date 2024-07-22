@@ -25,7 +25,7 @@ import com.mykotlinapps.bodybuilder.databinding.FragmentExercisesDbBinding
 import com.mykotlinapps.bodybuilder.databinding.BottomSheetFilterBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mykotlinapps.bodybuilder.R
-import com.mykotlinapps.bodybuilder.ui.ExerciseDetailActivity
+import com.mykotlinapps.bodybuilder.ui.fragments.ExerciseDetailFragment
 
 class ExercisesDBFragment : Fragment() {
 
@@ -197,7 +197,7 @@ class ExercisesDBFragment : Fragment() {
     }
 
     private fun showExerciseDetails(exercise: Exercise) {
-        val intent = Intent(requireContext(), ExerciseDetailActivity::class.java).apply {
+        val intent = Intent(requireContext(), ExerciseDetailFragment::class.java).apply {
             putExtra("exercise", exercise)
         }
         startActivity(intent)

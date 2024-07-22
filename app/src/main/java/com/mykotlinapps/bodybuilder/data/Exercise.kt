@@ -5,12 +5,15 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Exercise(
-    val id: String,
-    val name: String,
-    val bodyPart: String,
-    val equipment: String,
-    val target: String,
-    val gifUrl: String,
-    val secondaryMuscles: List<String>,
-    val instructions: List<String>
-) : Parcelable
+    var bodyPart: String = "",
+    var equipment: String = "",
+    var gifUrl: String = "",
+    var id: String = "",
+    var name: String = "",
+    var target: String = "",
+    var secondaryMuscles: List<String> = listOf(),
+    var instructions: List<String> = listOf()
+): Parcelable {
+    // No-argument constructor required by Firestore
+    constructor() : this("", "", "", "", "", "", listOf(), listOf())
+}

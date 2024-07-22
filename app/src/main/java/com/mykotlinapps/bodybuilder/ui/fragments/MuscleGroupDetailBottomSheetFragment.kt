@@ -44,9 +44,9 @@ class MuscleGroupDetailBottomSheetFragment : BottomSheetDialogFragment() {
 
         // Set up the RecyclerView with the workouts adapter
         binding.workoutsRecyclerView.layoutManager = LinearLayoutManager(context)
-        binding.workoutsRecyclerView.adapter = WorkoutsAdapter(workouts) { template ->
-            // Handle item click if necessary
-        }
+//        binding.workoutsRecyclerView.adapter = WorkoutsAdapter(workouts) { template ->
+//            // Handle item click if necessary
+//        }
     }
 
     override fun onDestroyView() {

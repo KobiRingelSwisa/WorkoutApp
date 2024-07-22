@@ -90,8 +90,12 @@ dependencies {
     implementation libs.androidx.databinding.runtime
     // Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics:21.0.0'
+    //CardView
+    implementation 'com.google.android.material:material:1.4.0'
 
 
 // Apply the Google Services plugin
     apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'androidx.navigation.safeargs'
+
 }

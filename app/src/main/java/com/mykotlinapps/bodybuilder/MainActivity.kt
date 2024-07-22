@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mykotlinapps.bodybuilder.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
+import androidx.fragment.app.commit
+import com.mykotlinapps.bodybuilder.ui.StrengthScoreView
+import com.mykotlinapps.bodybuilder.ui.fragments.ExercisesDBFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -51,5 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bottomNavigationView.setupWithNavController(navController)
+
+
     }
 }

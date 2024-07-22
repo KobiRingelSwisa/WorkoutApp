@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/muscle_group_button"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/gold"
+        android:backgroundTint="@color/dark_red"
         app:cornerRadius="16dp"
         android:textSize="10sp"
         android:elevation="4dp"
