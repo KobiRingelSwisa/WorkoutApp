@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Muscle Group"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/gold"
+        android:backgroundTint="@color/dark_red"
         app:cornerRadius="16dp"
         android:elevation="4dp"
         android:padding="8dp"/>

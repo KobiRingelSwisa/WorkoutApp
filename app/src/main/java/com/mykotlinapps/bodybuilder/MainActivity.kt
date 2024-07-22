@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.mykotlinapps.bodybuilder.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import androidx.fragment.app.commit
+import com.mykotlinapps.bodybuilder.ui.StrengthScoreView
 import com.mykotlinapps.bodybuilder.ui.fragments.ExercisesDBFragment
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
