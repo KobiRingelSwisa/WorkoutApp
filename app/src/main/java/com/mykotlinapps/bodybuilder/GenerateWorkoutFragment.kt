@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder
+package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.data.Workout
 import com.mykotlinapps.bodybuilder.databinding.DialogAddExerciseBinding
@@ -75,7 +76,7 @@ class GenerateWorkoutFragment : Fragment() {
                 val id = db.collection("exercises").document().id
                 val name = dialogBinding.etName.text.toString()
                 val target = dialogBinding.etTarget.text.toString()
-                val exercise = Exercise(bodyPart, equipment, gifUrl, id, name, target)
+                val exercise = Exercise(id,name, bodyPart, equipment, gifUrl, target, emptyList(), emptyList())
                 addExerciseView(exercise)
                 exercises.add(exercise)
             }
@@ -121,11 +122,11 @@ class GenerateWorkoutFragment : Fragment() {
 
     private fun addExerciseView(exercise: Exercise) {
         val exerciseView = LayoutInflater.from(context).inflate(R.layout.item_exercise, binding.exercisesContainer, false)
-        val textExerciseTitle = exerciseView.findViewById<TextView>(R.id.textExerciseTitle)
-        val textExerciseDetails = exerciseView.findViewById<TextView>(R.id.textExerciseDetails)
+//        val textExerciseTitle = exerciseView.findViewById<TextView>(R.id.textExerciseTitle)
+//        val textExerciseDetails = exerciseView.findViewById<TextView>(R.id.textExerciseDetails)
 
-        textExerciseTitle.text = exercise.name
-        textExerciseDetails.text = "Body Part: ${exercise.bodyPart}\nTarget: ${exercise.target}\nEquipment: ${exercise.equipment}"
+//        textExerciseTitle.text = exercise.name
+//        textExerciseDetails.text = "Body Part: ${exercise.bodyPart}\nTarget: ${exercise.target}\nEquipment: ${exercise.equipment}"
 
         binding.exercisesContainer.addView(exerciseView)
     }
