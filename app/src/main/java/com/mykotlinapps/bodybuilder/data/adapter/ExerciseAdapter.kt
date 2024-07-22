@@ -33,6 +33,7 @@ class ExerciseAdapter(
             binding.exerciseTarget.text = exercise.target
             binding.exerciseEquipment.text = exercise.equipment
 
+
             val url = exercise.gifUrl
             Log.d("ExerciseAdapter", "Loading URL: $url")
 
