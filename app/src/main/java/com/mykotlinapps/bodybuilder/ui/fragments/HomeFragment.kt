@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
             showLoadingAnimation()
 
             viewLifecycleOwner.lifecycleScope.launch {
-                delay(3000)
+
                 hideLoadingAnimation()
             }
 
