@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,148 +13,163 @@
         android:src="@drawable/background"
         android:contentDescription="@null" />
 
-<RelativeLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.PlansFragment">
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/loading_animation"
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:layout_centerInParent="true"
-        app:lottie_rawRes="@raw/hand"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        android:visibility="gone" />
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:id="@+id/fragment_content"
-    android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.PlansFragment">
 
-        <TextView
-            android:id="@+id/myWorkoutsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_workouts"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_animation"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_centerInParent="true"
+            app:lottie_rawRes="@raw/hand"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:visibility="gone" />
 
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fab_add_workout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="16dp"-->
-<!--            android:src="@drawable/ic_add"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/exerciseRecyclerView"-->
-<!--            app:layout_constraintEnd_toEndOf="@id/exerciseRecyclerView" />-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:id="@+id/fragment_content"
+            android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/exerciseRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWorkoutsTitle"
-            android:background="@android:color/white"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp">
 
-        <TextView
-            android:id="@+id/exerciseRecyclerViewEmptyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_workouts_please_create_one"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWorkoutsTitle" />
+                <TextView
+                    android:id="@+id/myWorkoutsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_workouts"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/generateWorkout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/generate_workout"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/exerciseRecyclerView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/Widget.MaterialComponents.Button"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/myWorkoutsTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/generatedWorkoutRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/generateWorkout"
-            android:background="@android:color/white"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/exerciseRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white" />
+                </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/generatedWorkoutRecyclerViewEmptyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_generated_workouts"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/generateWorkout" />
+                <TextView
+                    android:id="@+id/exerciseRecyclerViewEmptyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_workouts_please_create_one"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myWorkoutsTitle" />
 
-        <TextView
-            android:id="@+id/communityWorkoutsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/community_workouts"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/generatedWorkoutRecyclerView"
-            app:layout_constraintStart_toStartOf="parent"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/generateWorkout"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/generate_workout"
+                    app:backgroundTint="@color/dark_red"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardView1" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/communityWorkoutsRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/communityWorkoutsTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@android:color/white"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/generateWorkout">
 
-        <TextView
-            android:id="@+id/communityWorkoutsRecyclerViewEmptyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_community_workouts"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/communityWorkoutsTitle" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/generatedWorkoutRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white" />
+                </androidx.cardview.widget.CardView>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/communityWorkoutsRecyclerViewEmptyText"
-            android:text="@string/exe"
-            android:id="@+id/exe_btn"
-            />
+                <TextView
+                    android:id="@+id/generatedWorkoutRecyclerViewEmptyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_generated_workouts"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/generateWorkout" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                <TextView
+                    android:id="@+id/communityWorkoutsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/community_workouts"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/cardView2"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/communityWorkoutsTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/communityWorkoutsRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/communityWorkoutsRecyclerViewEmptyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_community_workouts"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/communityWorkoutsTitle" />
+
+                <Button
+                    android:id="@+id/exe_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/dark_red"
+                    android:text="@string/exe"
+                    app:layout_constraintBottom_toTopOf="@+id/cardView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </RelativeLayout>
 </FrameLayout>
