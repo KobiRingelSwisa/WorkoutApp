@@ -111,6 +111,9 @@
         <action
             android:id="@+id/action_exercisesDBFragment_to_exerciseDetailFragment"
             app:destination="@id/exerciseDetailFragment" />
+        <action
+            android:id="@+id/action_exercisesDBFragment_to_generateWorkoutFragment"
+            app:destination="@id/generateWorkoutFragment" />
     </fragment>
 
     <fragment

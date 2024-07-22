@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -57,14 +55,15 @@ class GenerateWorkoutFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
-//        binding.btnAddExercise.setOnClickListener {
-//            showAddExerciseDialog()
-//        }
-        val button = view.findViewById<Button>(R.id.exe_btn)
-        button.setOnClickListener {
-            findNavController().navigate(R.id.action_generateWorkoutFragment_to_ExercisesDBFragment)
+        val selectedExercises = arguments?.getParcelableArray("selectedExercises")?.toList() as? List<Exercise>
+        if (selectedExercises != null) {
+            exercises.addAll(selectedExercises)
+            selectedExercises.forEach { addExerciseView(it) }
         }
 
+        binding.btnAddExercise.setOnClickListener {
+            showAddExerciseDialog()
+        }
 
         binding.btnSaveWorkout.setOnClickListener {
             saveWorkout()
@@ -83,7 +82,7 @@ class GenerateWorkoutFragment : Fragment() {
                 val id = UUID.randomUUID().toString()
                 val name = dialogBinding.etName.text.toString()
                 val target = dialogBinding.etTarget.text.toString()
-                val exercise = Exercise(id,name, bodyPart, equipment, gifUrl, target, emptyList(), emptyList())
+                val exercise = Exercise(id, name, bodyPart, equipment, gifUrl, target, emptyList(), emptyList())
                 addExerciseView(exercise)
                 exercises.add(exercise)
             }
@@ -129,12 +128,7 @@ class GenerateWorkoutFragment : Fragment() {
 
     private fun addExerciseView(exercise: Exercise) {
         val exerciseView = LayoutInflater.from(context).inflate(R.layout.item_exercise, binding.exercisesContainer, false)
-//        val textExerciseTitle = exerciseView.findViewById<TextView>(R.id.textExerciseTitle)
-//        val textExerciseDetails = exerciseView.findViewById<TextView>(R.id.textExerciseDetails)
-
-//        textExerciseTitle.text = exercise.name
-//        textExerciseDetails.text = "Body Part: ${exercise.bodyPart}\nTarget: ${exercise.target}\nEquipment: ${exercise.equipment}"
-
+        // Customize the exercise view as needed
         binding.exercisesContainer.addView(exerciseView)
     }
 
@@ -161,6 +155,6 @@ class GenerateWorkoutFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding=null
-        }
+        _binding = null
+    }
 }

@@ -51,5 +51,11 @@
                 android:text="@string/equipment"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/exerciseCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 </layout>

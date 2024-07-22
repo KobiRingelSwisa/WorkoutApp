@@ -1,7 +1,5 @@
 package com.mykotlinapps.bodybuilder.ui.fragments
 
-
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,14 +17,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.data.adapter.ExerciseAdapter
 import com.mykotlinapps.bodybuilder.data.viewmodel.ExerciseViewModel
-import com.mykotlinapps.bodybuilder.databinding.FragmentExercisesDbBinding
 import com.mykotlinapps.bodybuilder.databinding.BottomSheetFilterBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.mykotlinapps.bodybuilder.R
-import com.mykotlinapps.bodybuilder.ui.fragments.ExerciseDetailFragment
+import com.mykotlinapps.bodybuilder.databinding.FragmentExercisesDbBinding
 
 class ExercisesDBFragment : Fragment() {
 
@@ -75,6 +72,14 @@ class ExercisesDBFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
+        binding.selectExercisesButton.setOnClickListener {
+            val selectedExercises = adapter.getSelectedExercises().toTypedArray()
+            val bundle = Bundle().apply {
+                putParcelableArray("selectedExercises", selectedExercises)
+            }
+            findNavController().navigate(R.id.action_exercisesDBFragment_to_generateWorkoutFragment, bundle)
+        }
+
         return binding.root
     }
 
@@ -86,9 +91,10 @@ class ExercisesDBFragment : Fragment() {
             } else {
                 noExercisesTextView.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
-                adapter = ExerciseAdapter(exercises) { exercise ->
-                    showExerciseDetails(exercise)
-                }
+                adapter = ExerciseAdapter(exercises,
+//                    onExerciseSelected = { /* Handle exercise selected */ },
+//                    onExerciseDeselected = { /* Handle exercise deselected */ }
+                )
                 binding.recyclerView.adapter = adapter
             }
         })

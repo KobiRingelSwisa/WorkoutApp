@@ -5,15 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.data.Set
 import com.mykotlinapps.bodybuilder.databinding.AddExcerciseLayoutBinding
 
-class ExercisesAdapter(private val exercises: MutableList<Exercise>) : RecyclerView.Adapter<ExercisesAdapter.ExerciseViewHolder>() {
+class ExercisesAdapter(
+    private val exercises: MutableList<Exercise>,
+    private val onExerciseSelected: (Exercise) -> Unit,
+    private val onExerciseDeselected: (Exercise) -> Unit
+) : RecyclerView.Adapter<ExercisesAdapter.ExerciseViewHolder>() {
 
+    private val selectedExercises = mutableSetOf<Exercise>()
     private val sets: MutableList<Set> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
@@ -44,6 +51,8 @@ class ExercisesAdapter(private val exercises: MutableList<Exercise>) : RecyclerV
         notifyItemMoved(fromPosition, toPosition)
     }
 
+    fun getSelectedExercises(): List<Exercise> = selectedExercises.toList()
+
     inner class ExerciseViewHolder(private val binding: AddExcerciseLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -54,12 +63,25 @@ class ExercisesAdapter(private val exercises: MutableList<Exercise>) : RecyclerV
             binding.expandCollapseButton.setOnClickListener {
                 toggleSetsVisibility()
             }
+
+            binding.exerciseCheckBox.setOnCheckedChangeListener { _, isChecked ->
+                val exercise = exercises[adapterPosition]
+                if (isChecked) {
+                    selectedExercises.add(exercise)
+                    onExerciseSelected(exercise)
+                } else {
+                    selectedExercises.remove(exercise)
+                    onExerciseDeselected(exercise)
+                }
+            }
         }
 
         fun bind(exercise: Exercise, sets: MutableList<Set>) {
             binding.textExerciseTitle.text = exercise.name
             binding.imageExercise.setImageURI(Uri.parse(exercise.gifUrl))
             binding.containerReps.removeAllViews()
+            binding.exerciseCheckBox.isChecked = selectedExercises.contains(exercise)
+
             for (set in sets) {
                 val setView = LayoutInflater.from(binding.containerReps.context)
                     .inflate(R.layout.item_set, binding.containerReps, false)
