@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.android.material.snackbar.Snackbar
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.User
-import com.mykotlinapps.bodybuilder.UserDetails
+import com.mykotlinapps.bodybuilder.data.UserDetails
 import com.mykotlinapps.bodybuilder.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {

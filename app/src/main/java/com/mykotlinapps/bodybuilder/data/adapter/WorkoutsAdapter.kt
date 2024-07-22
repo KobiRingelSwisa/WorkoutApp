@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.Workout
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 
 class WorkoutsAdapter(
-    private val workoutTemplates: List<WorkoutTemplate>,
+    private val workoutTemplates: List<Workout>,
     private val onItemClick: (WorkoutTemplate) -> Unit
 ) : RecyclerView.Adapter<WorkoutsAdapter.WorkoutTemplateViewHolder>() {
 
@@ -27,8 +28,8 @@ class WorkoutsAdapter(
     override fun onBindViewHolder(holder: WorkoutTemplateViewHolder, position: Int) {
         val template = workoutTemplates[position]
         holder.nameTextView.text = template.name
-        holder.descriptionTextView.text = template.details
-        holder.itemView.setOnClickListener { onItemClick(template) }
+//        holder.descriptionTextView.text = template.name
+//        holder.itemView.setOnClickListener { onItemClick(template) }
     }
 
     override fun getItemCount() = workoutTemplates.size

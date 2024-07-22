@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep all classes in the data package
+-keep class com.mykotlinapps.bodybuilder.data.** { *; }
+
+# Keep default constructors
+-keepnames class com.mykotlinapps.bodybuilder.data.** { public *; }
+
+# Keep field names
+-keepclassmembers class com.mykotlinapps.bodybuilder.data.** {
+    <fields>;
+}

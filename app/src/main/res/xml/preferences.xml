@@ -7,10 +7,11 @@
         android:key="account_category"
         android:title="Account">
 
-        <EditTextPreference
-            android:key="username"
-            android:title="Username"
-            app:useSimpleSummaryProvider="true"/>
+        <!-- Display User Full Name -->
+        <Preference
+            android:key="user_full_name"
+            android:title="Full Name"
+            android:summary="User Full Name"/>
 
         <Preference
             android:key="change_password"
@@ -28,6 +29,12 @@
             android:key="logout"
             android:title="Logout"
             android:summary="Tap to logout"/>
+
+        <!-- Delete Account Button -->
+        <Preference
+            android:key="delete_account"
+            android:title="Delete Account"
+            android:summary="Permanently delete your account and all data"/>
 
     </PreferenceCategory>
 
@@ -59,33 +66,5 @@
             android:title="Export Data"
             android:summary="Export your workout data"/>
 
-        <Preference
-            android:key="delete_account"
-            android:title="Delete Account"
-            android:summary="Permanently delete your account and all data"/>
-
     </PreferenceCategory>
-
-    <PreferenceCategory>
-
-        <Preference
-            android:key="weight"
-            android:title="Weight"
-            android:summary="Not set"
-            android:icon="@drawable/ic_weight" />
-
-        <Preference
-            android:key="bodyFat"
-            android:title="Body Fat"
-            android:summary="Not set"
-            android:icon="@drawable/ic_body_fat" />
-
-        <Preference
-            android:key="waistSize"
-            android:title="Waist Size"
-            android:summary="Not set"
-            android:icon="@drawable/ic_waist_size" />
-
-    </PreferenceCategory>
-
 </PreferenceScreen>

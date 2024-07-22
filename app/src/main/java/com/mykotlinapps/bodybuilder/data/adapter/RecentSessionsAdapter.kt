@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.bodybuilder.R
-import com.mykotlinapps.bodybuilder.data.WorkoutSession
+import com.mykotlinapps.bodybuilder.data.Workout
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class RecentSessionsAdapter(private val sessions: List<WorkoutSession>) :
+class RecentSessionsAdapter(private val sessions: List<Workout>) :
     RecyclerView.Adapter<RecentSessionsAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

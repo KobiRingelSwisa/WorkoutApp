@@ -1,87 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etFullName"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Full Name"
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonLayout">
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/etRepeatPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Repeat Password"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/etHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Height in CM"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/etWeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Weight in KG"
-        android:inputType="number" />
-
-    <RadioGroup
-        android:id="@+id/rgGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rbMale"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Man" />
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/rbFemale"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/etFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/etRepeatPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Repeat Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/etHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Height in CM"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Weight in KG"
+                android:inputType="number" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Man" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Woman" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:inputType="number" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Woman" />
-    </RadioGroup>
+            android:text="Register"
+            android:layout_marginBottom="8dp" />
 
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Age"
-        android:inputType="number" />
+        <Button
+            android:id="@+id/btnGoToSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go to Sign In" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btnGoToSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go to Sign In" />
-</LinearLayout>
+</RelativeLayout>

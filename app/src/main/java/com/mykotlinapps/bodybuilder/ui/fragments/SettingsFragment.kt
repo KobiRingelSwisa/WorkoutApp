@@ -2,20 +2,31 @@ package com.mykotlinapps.bodybuilder.ui.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import androidx.preference.Preference
 import com.airbnb.lottie.LottieAnimationView
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.GsonBuilder
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
+import java.io.File
+import java.io.FileWriter
+import java.io.IOException
 
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -23,6 +34,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var loadingAnimation: LottieAnimationView
     private lateinit var preferencesContainer: View
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,9 +92,38 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
             auth = FirebaseAuth.getInstance()
 
+            // Log current user to console
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                Log.d("SettingsFragment", "Current User: $currentUser")
+                Log.d("SettingsFragment", "User ID: ${currentUser.uid}")
+                Log.d("SettingsFragment", "User Email: ${currentUser.email}")
+            } else {
+                Log.d("SettingsFragment", "No user is currently logged in.")
+            }
+
             // Set user email in preference summary
             val userEmailPref: Preference? = findPreference("user_email")
             userEmailPref?.summary = auth.currentUser?.email ?: "Not logged in"
+
+            // Set user full name in preference summary
+            val userFullNamePref: Preference? = findPreference("user_full_name")
+            val userId = auth.currentUser?.uid
+            if (userId != null) {
+                FirebaseFirestore.getInstance().collection("users").document(userId)
+                    .get()
+                    .addOnSuccessListener { document ->
+//                        sdcard android data com files document file
+                        val userDetails = document.get("userDetails") as? Map<String, Any>
+                        val fullName = auth.currentUser?.displayName ?: "Unknown"
+                        userFullNamePref?.summary = fullName
+                        Log.d("SettingsFragment", "Fetched Full Name: $fullName")
+                    }
+                    .addOnFailureListener {
+                        userFullNamePref?.summary = "Error fetching name"
+                        Log.e("SettingsFragment", "Error fetching full name", it)
+                    }
+            }
 
             // Handle logout preference click
             val logoutPref: Preference? = findPreference("logout")
@@ -92,31 +133,111 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
                 true
             }
 
-            sharedPreferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
-                if (key == "weight" || key == "bodyFat" || key == "waistSize") {
-                    updatePreferences()
-                }
+            // Handle delete account preference click
+            val deleteAccountPref: Preference? = findPreference("delete_account")
+            deleteAccountPref?.setOnPreferenceClickListener {
+                showPasswordPrompt()
+                true
             }
 
-            updatePreferences()
+            // Handle export data preference click
+            val exportDataPref: Preference? = findPreference("export_data")
+            exportDataPref?.setOnPreferenceClickListener {
+                exportUserData()
+                true
+            }
+        }
 
-            viewModel.latestBodyStats.observe(this) { bodyStats ->
-                bodyStats?.let {
-                    findPreference<Preference>("weight")?.summary = it.weight.toString()
-                    findPreference<Preference>("bodyFat")?.summary = it.bodyFat.toString()
-                    findPreference<Preference>("waistSize")?.summary = it.waistSize.toString()
+        private fun showPasswordPrompt() {
+            val passwordInput = EditText(requireContext())
+            passwordInput.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirm Password")
+                .setMessage("Please enter your password to delete your account.")
+                .setView(passwordInput)
+                .setPositiveButton("Confirm") { _, _ ->
+                    val password = passwordInput.text.toString()
+                    reAuthenticateAndDeleteUser(password)
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        }
+
+        private fun reAuthenticateAndDeleteUser(password: String) {
+            val user = auth.currentUser
+            user?.let {
+                val email = it.email
+
+                if (email != null && password.isNotEmpty()) {
+                    val credential = EmailAuthProvider.getCredential(email, password)
+                    user.reauthenticate(credential)
+                        .addOnCompleteListener { reauthTask ->
+                            if (reauthTask.isSuccessful) {
+                                deleteUserAccount()
+                            } else {
+                                Toast.makeText(context, "Re-authentication failed", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                } else {
+                    Toast.makeText(context, "Email or password is missing", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
-        private fun updatePreferences() {
-            val weight = sharedPreferences.getString("weight", "Not set")
-            val bodyFat = sharedPreferences.getString("bodyFat", "Not set")
-            val waistSize = sharedPreferences.getString("waistSize", "Not set")
+        private fun deleteUserAccount() {
+            val user = auth.currentUser
+            user?.let {
+                val userId = it.uid
+                FirebaseFirestore.getInstance().collection("users").document(userId)
+                    .delete()
+                    .addOnSuccessListener {
+                        // Now delete the user authentication account
+                        user.delete()
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    findNavController().navigate(R.id.signInFragment)
+                                    Toast.makeText(context, "Account deleted successfully", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(context, "Failed to delete account", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(context, "Failed to delete account data", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
 
-            findPreference<Preference>("weight")?.summary = weight
-            findPreference<Preference>("bodyFat")?.summary = bodyFat
-            findPreference<Preference>("waistSize")?.summary = waistSize
+        private fun exportUserData() {
+            val userId = auth.currentUser?.uid
+            if (userId != null) {
+                FirebaseFirestore.getInstance().collection("users").document(userId)
+                    .get()
+                    .addOnSuccessListener { document ->
+                        val userData = document.data
+                        if (userData != null) {
+                            val jsonString = GsonBuilder().setPrettyPrinting().create().toJson(userData)
+                            saveJsonToFile(jsonString)
+                        } else {
+                            Toast.makeText(context, "No user data found", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(context, "Failed to fetch user data", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
+
+        private fun saveJsonToFile(jsonString: String) {
+            val fileName = "user_data_${System.currentTimeMillis()}.json"
+            val file = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
+            try {
+                FileWriter(file).use { it.write(jsonString) }
+                Toast.makeText(context, "Data exported to $fileName", Toast.LENGTH_SHORT).show()
+            } catch (e: IOException) {
+                Toast.makeText(context, "Failed to export data", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

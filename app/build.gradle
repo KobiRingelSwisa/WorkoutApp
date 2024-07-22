@@ -74,6 +74,7 @@ dependencies {
     implementation libs.firebase.auth.ktx
     implementation libs.firebase.firestore.ktx
     implementation libs.androidsvg
+    implementation 'com.google.code.gson:gson:2.8.8'
 
     // Add dependencies from app
     implementation libs.androidx.lifecycle.livedata.ktx

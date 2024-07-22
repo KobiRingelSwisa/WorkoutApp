@@ -2,9 +2,11 @@ package com.mykotlinapps.bodybuilder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mykotlinapps.bodybuilder.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -22,13 +24,34 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        if (FirebaseAuth.getInstance().currentUser != null) {
-            navController.navigate(R.id.homeFragment)
+        setupBottomNavigation()
+        checkUserAuthentication()
+    }
+
+    private fun setupBottomNavigation() {
+        binding.bottomNavigationView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.signInFragment -> binding.bottomNavigationView.visibility = View.GONE
+                else -> binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun checkUserAuthentication() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            // User is not logged in, navigate to signInFragment
+            navController.navigate(R.id.signInFragment)
+        } else {
+            // User is logged in, navigate to homeFragment if currently at signInFragment
+            if (navController.currentDestination?.id == R.id.signInFragment) {
+                navController.navigate(R.id.homeFragment)
+            }
         }
 
         binding.bottomNavigationView.setupWithNavController(navController)
