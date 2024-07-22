@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -43,6 +44,11 @@ class PlansFragment : Fragment() {
 
         loadingAnimation = binding.loadingAnimation
         fragmentContent = binding.fragmentContent
+
+        val button = view.findViewById<Button>(R.id.exe_btn)
+        button.setOnClickListener {
+            findNavController().navigate(R.id.action_plansFragment_to_ExercisesDBFragment)
+        }
 
         // Show loading animation and hide content initially
         showLoadingAnimation()
