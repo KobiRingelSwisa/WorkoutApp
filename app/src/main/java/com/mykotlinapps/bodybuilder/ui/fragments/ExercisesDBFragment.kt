@@ -198,7 +198,9 @@ class ExercisesDBFragment : Fragment() {
     }
 
     private fun showExerciseDetails(exercise: Exercise) {
-        val action = ExercisesDBFragmentDirections.actionExercisesDBFragmentToExerciseDetailFragment(exercise)
-        findNavController().navigate(action)
+        val bundle = Bundle().apply {
+            putParcelable("exercise", exercise)
+        }
+        findNavController().navigate(R.id.action_exercisesDBFragment_to_exerciseDetailFragment, bundle)
     }
 }

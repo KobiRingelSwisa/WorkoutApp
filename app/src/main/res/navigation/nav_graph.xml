@@ -100,14 +100,7 @@
         android:name="com.mykotlinapps.bodybuilder.ui.fragments.MuscleGroupDetailBottomSheetFragment"
         android:label="Muscle Group Detail" />
 
-    <fragment
-        android:id="@+id/allItemsFragment"
-        android:name="com.mykotlinapps.bodybuilder.ui.all_character.AllItemsFragment"
-        android:label="All Items">
-        <action
-            android:id="@+id/action_allItemsFragment_to_addItemFragment"
-            app:destination="@id/AddExcerciseFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/ExercisesDBFragment"
         android:name="com.mykotlinapps.bodybuilder.ui.fragments.ExercisesDBFragment"
@@ -117,11 +110,27 @@
             app:destination="@id/exerciseDetailFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/allItemsFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.all_character.AllItemsFragment"
+        android:label="All Items">
+        <action
+            android:id="@+id/action_allItemsFragment_to_addItemFragment"
+            app:destination="@id/AddExcerciseFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/AddExcerciseFragment"
         android:name="com.mykotlinapps.bodybuilder.ui.add_character.AddExcerciseFragment"
         android:label="Add Item" />
+    <fragment
+        android:id="@+id/exercisesDBFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.fragments.ExercisesDBFragment"
+        android:label="ExercisesDB">
+        <action
+            android:id="@+id/action_exercisesDBFragment_to_exerciseDetailFragment"
+            app:destination="@id/exerciseDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/exerciseDetailFragment"
@@ -131,5 +140,6 @@
             android:name="exercise"
             app:argType="com.mykotlinapps.bodybuilder.data.Exercise" />
     </fragment>
+
 
 </navigation>
