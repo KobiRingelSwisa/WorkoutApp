@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_homeFragment_to_workoutPlanFragment"
             app:destination="@id/workoutPlanFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_plansFragment"
+            app:destination="@id/plansFragment" />
     </fragment>
 
     <fragment
@@ -97,4 +100,29 @@
         android:id="@+id/muscleGroupDetailFragment"
         android:name="com.mykotlinapps.bodybuilder.ui.fragments.MuscleGroupDetailBottomSheetFragment"
         android:label="Muscle Group Detail" />
+
+    <fragment
+        android:id="@+id/allItemsFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.fragments.AllItemsFragment"
+        android:label="All Items">
+        <action
+            android:id="@+id/action_allItemsFragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.fragments.AddItemFragment"
+        android:label="Add Item" />
+
+    <!-- res/navigation/nav_graph.xml -->
+    <fragment
+        android:id="@+id/exerciseDetailFragment"
+        android:name="com.mykotlinapps.bodybuilder.ui.fragments.ExerciseDetailFragment"
+        android:label="Exercise Detail">
+        <argument
+            android:name="exercise"
+            app:argType="com.mykotlinapps.bodybuilder.data.Exercise" />
+    </fragment>
+
 </navigation>

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.databinding.ItemExerciseBinding
-import com.mykotlinapps.bodybuilder.ui.capitalizeWords
+import com.mykotlinapps.bodybuilder.ui.fragments.capitalizeWords
 
 class ExerciseAdapter(
     private val exercises: List<Exercise>,

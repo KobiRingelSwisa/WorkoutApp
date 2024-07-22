@@ -96,4 +96,6 @@ dependencies {
 
 // Apply the Google Services plugin
     apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'androidx.navigation.safeargs'
+
 }

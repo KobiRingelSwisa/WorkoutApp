@@ -57,7 +57,7 @@ class AllItemsFragment : Fragment() {
                 override fun onItemLongClicked(index: Int) {
                     val item = it[index]
                     viewModel.setItem(item)
-                    findNavController().navigate(R.id.action_allItemsFragment_to_detailItemFragment)
+                    findNavController().navigate(R.id.action_allItemsFragment_to_addItemFragment)
                 }
             })
             binding.recycler.layoutManager = GridLayoutManager(requireContext(),2)
