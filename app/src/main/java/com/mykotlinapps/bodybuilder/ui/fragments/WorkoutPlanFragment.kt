@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mykotlinapps.bodybuilder.data.Exercise
@@ -17,6 +18,7 @@ class WorkoutPlanFragment : Fragment() {
 
     private var _binding: FragmentWorkoutPlanBinding? = null
     private val binding get() = _binding!!
+    private lateinit var searchView: SearchView
     private val exercises = ArrayList<Exercise>()
 
     override fun onCreateView(

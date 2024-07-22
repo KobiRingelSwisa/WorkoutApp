@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder.data.local_db
+package com.mykotlinapps.bodybuilder.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -12,6 +12,8 @@ import androidx.room.*
 
 @Dao
 interface ItemDao {
+
+
  @Insert(onConflict = OnConflictStrategy.REPLACE)
  suspend fun addItem(item: Item): Long
 

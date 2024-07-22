@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.data.Plan
@@ -43,6 +44,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private var imageUri: Uri? = null
     private var currentPhotoPath: String? = null
+    private lateinit var loadingAnimation: LottieAnimationView
 
     private val workoutPlans = mapOf(
         "2023-07-19" to listOf(
@@ -99,7 +101,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        loadingAnimation = binding.loadingAnimation
+        binding.svgImageView.setSVG(R.raw.full_body_muscles)
         binding.apply {
             showLoadingAnimation()
 
@@ -284,11 +287,13 @@ class HomeFragment : Fragment() {
 
     private fun showLoadingAnimation() {
         binding.loadingAnimation.visibility = View.VISIBLE
+        binding.svgImageView.visibility = View.VISIBLE
         binding.fragmentContent.visibility = View.GONE
     }
 
     private fun hideLoadingAnimation() {
         binding.loadingAnimation.visibility = View.GONE
         binding.fragmentContent.visibility = View.VISIBLE
+        binding.svgImageView.visibility = View.GONE
     }
 }

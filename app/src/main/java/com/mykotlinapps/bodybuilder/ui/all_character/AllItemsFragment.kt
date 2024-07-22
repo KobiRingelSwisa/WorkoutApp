@@ -1,12 +1,9 @@
 package com.mykotlinapps.bodybuilder.ui.all_character
 
-import android.app.AlertDialog
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -16,11 +13,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.databinding.AllItemsLayoutBinding
-import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
+import com.mykotlinapps.bodybuilder.data.viewmodel.ItemsViewModel
 
 class AllItemsFragment : Fragment() {
 

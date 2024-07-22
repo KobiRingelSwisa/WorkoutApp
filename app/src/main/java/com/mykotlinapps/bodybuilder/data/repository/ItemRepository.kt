@@ -2,13 +2,8 @@ package com.mykotlinapps.bodybuilder.data.repository
 
 import android.app.Application
 import com.mykotlinapps.bodybuilder.data.Item
-import com.mykotlinapps.bodybuilder.data.local_db.ItemDao
+import com.mykotlinapps.bodybuilder.data.dao.ItemDao
 import com.mykotlinapps.bodybuilder.data.local_db.ItemDataBase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 class ItemRepository(application: Application)  { //:CoroutineScope {
 

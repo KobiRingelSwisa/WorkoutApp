@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.mykotlinapps.bodybuilder.data.BodyStats
 import com.mykotlinapps.bodybuilder.data.Item
+import com.mykotlinapps.bodybuilder.data.dao.BodyStatsDao
+import com.mykotlinapps.bodybuilder.data.dao.ItemDao
 
 @Database(entities = [Item::class, BodyStats::class], version =1, exportSchema = false)
 abstract class ItemDataBase: RoomDatabase() {

@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder.data.local_db
+package com.mykotlinapps.bodybuilder.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

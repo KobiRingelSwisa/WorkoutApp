@@ -15,7 +15,7 @@ import androidx.fragment.app.activityViewModels
 import com.mykotlinapps.bodybuilder.data.Exercise
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.databinding.AddExcerciseLayoutBinding
-import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
+import com.mykotlinapps.bodybuilder.data.viewmodel.ItemsViewModel
 
 class AddExcerciseFragment : Fragment() {
     private var _binding: AddExcerciseLayoutBinding? = null
