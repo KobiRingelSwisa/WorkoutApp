@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.User
 //import com.mykotlinapps.bodybuilder.data.User
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
@@ -51,6 +53,9 @@ class PlansFragment : Fragment() {
         }, 3000) // 3 seconds delay
 
         setupRecyclerView()
+        binding.generateWorkout.setOnClickListener {
+            findNavController().navigate(R.id.action_plansFragment_to_generateWorkoutFragment)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -106,5 +111,5 @@ class PlansFragment : Fragment() {
     private fun hideLoadingAnimation() {
         loadingAnimation.visibility = View.GONE
         fragmentContent.visibility = View.VISIBLE
-    }
+        }
 }

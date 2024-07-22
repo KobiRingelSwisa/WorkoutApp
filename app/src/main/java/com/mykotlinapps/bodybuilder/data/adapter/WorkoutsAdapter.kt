@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mykotlinapps.bodybuilder.R
+import com.mykotlinapps.bodybuilder.data.Workout
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 
 class WorkoutsAdapter(
@@ -27,7 +28,6 @@ class WorkoutsAdapter(
     override fun onBindViewHolder(holder: WorkoutTemplateViewHolder, position: Int) {
         val template = workoutTemplates[position]
         holder.nameTextView.text = template.name
-        holder.descriptionTextView.text = template.details
         holder.itemView.setOnClickListener { onItemClick(template) }
     }
 

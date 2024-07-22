@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import android.widget.ScrollView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.mykotlinapps.bodybuilder.data.adapter.MuscleGroupAdapter
 import com.mykotlinapps.bodybuilder.data.MuscleGroupPerformance
 import com.mykotlinapps.bodybuilder.R
@@ -55,8 +56,22 @@ class AnalyticsFragment : Fragment() {
 
     private fun setupMuscleGroupRecyclerView() {
         muscleGroupRecyclerView = binding.muscleGroupRecyclerView
-        muscleGroupRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val gridLayoutManager = GridLayoutManager(context, 3)
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                // Define span sizes
+                return when (position) {
+                    // First row: 3 buttons, each takes 1 span
+                    in 0..2 -> 1
+                    // Second row: 3 buttons, each takes 1 span
+                    in 3..5 -> 1
+                    // Third row: "Glutes" button spans 3 columns to center it
+                    6 -> 3
+                    else -> 1
+                }
+            }
+        }
+        muscleGroupRecyclerView.layoutManager = gridLayoutManager
 
         val muscleGroupList = listOf(
             MuscleGroupPerformance("Chest", "85%", "Strength training twice a week"),

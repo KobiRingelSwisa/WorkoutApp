@@ -3,17 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:background="@color/background"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="8dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/muscleGroupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Muscle Group"
+        android:text="@string/muscle_group_button"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/gold"
         app:cornerRadius="16dp"
+        android:textSize="10sp"
         android:elevation="4dp"
         android:padding="8dp"/>
 

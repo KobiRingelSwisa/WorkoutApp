@@ -6,4 +6,9 @@
     <string name="select_body_part">Select Body Part</string>
     <string name="select_target">Select Target Muscle</string>
     <string name="select_equipment">Select Equipment</string>
+    <string name="muscle_group_button">Muscle Group</string>
+    <string name="template_name">Template Name</string>
+    <string name="template_description">Template Description</string>
+    <string name="kg">KG</string>
+    <string name="reps">Reps</string>
 </resources>
