@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.mykotlinapps.bodybuilder.databinding.DetailItemLayoutBinding
-import com.mykotlinapps.bodybuilder.ui.ItemsViewModel
+import com.mykotlinapps.bodybuilder.data.viewmodel.ItemsViewModel
 
 class DetailItemFragment: Fragment() {
 

@@ -1,7 +1,10 @@
-package com.mykotlinapps.bodybuilder.data
+package com.mykotlinapps.bodybuilder.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.mykotlinapps.bodybuilder.data.Exercise
+import com.mykotlinapps.bodybuilder.data.dao.ExerciseDao
+import com.mykotlinapps.bodybuilder.data.ExerciseEntity
 import com.mykotlinapps.bodybuilder.data.network.ExerciseApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

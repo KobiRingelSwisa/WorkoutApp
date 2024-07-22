@@ -29,6 +29,7 @@ class ExerciseDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val exercise: Exercise = args.exercise
+        exercise.name = exercise.name.capitalizeWords()
         binding.exercise = exercise
         binding.executePendingBindings()
     }

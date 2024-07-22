@@ -2,7 +2,7 @@ package com.mykotlinapps.bodybuilder.data.repository
 
 import androidx.lifecycle.LiveData
 import com.mykotlinapps.bodybuilder.data.BodyStats
-import com.mykotlinapps.bodybuilder.data.local_db.BodyStatsDao
+import com.mykotlinapps.bodybuilder.data.dao.BodyStatsDao
 
 class BodyStatsRepository(private val bodyStatsDao: BodyStatsDao) {
 

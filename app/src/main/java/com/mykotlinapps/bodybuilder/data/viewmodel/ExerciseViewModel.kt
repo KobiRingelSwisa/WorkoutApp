@@ -5,14 +5,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mykotlinapps.bodybuilder.data.AppDatabase
+import com.mykotlinapps.bodybuilder.data.local_db.AppDatabase
 import com.mykotlinapps.bodybuilder.data.Exercise
-import com.mykotlinapps.bodybuilder.data.ExerciseRepository
+import com.mykotlinapps.bodybuilder.data.repository.ExerciseRepository
 import com.mykotlinapps.bodybuilder.data.network.ApiClient
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ExerciseViewModel(application: Application) : AndroidViewModel(application) {
-
     private val exerciseRepository: ExerciseRepository
     private val _filteredExercises = MutableLiveData<List<Exercise>>()
     val filteredExercises: LiveData<List<Exercise>> = _filteredExercises
@@ -32,6 +32,7 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
         exerciseRepository = ExerciseRepository(exerciseDao, apiService)
         fetchBodyParts()
         fetchExercises()
+        periodicallyFetchExercises()
     }
 
     fun searchExercises(name: String, bodyPart: String?, target: String?, equipment: String?) {
@@ -54,6 +55,15 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    private fun periodicallyFetchExercises() {
+        viewModelScope.launch {
+            while (true) {
+                fetchExercises()
+                delay(60 * 60 * 1000) // Fetch every hour
+            }
+        }
+    }
+
     fun loadTargets(bodyPart: String) {
         viewModelScope.launch {
             val targets = exerciseRepository.getTargetsByBodyPart(bodyPart)
@@ -68,5 +78,3 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
         }
     }
 }
-
-

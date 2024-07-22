@@ -1,10 +1,12 @@
-package com.mykotlinapps.bodybuilder.data
+package com.mykotlinapps.bodybuilder.data.local_db
 
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import android.content.Context
+import com.mykotlinapps.bodybuilder.data.ExerciseEntity
+import com.mykotlinapps.bodybuilder.data.dao.ExerciseDao
 import com.mykotlinapps.bodybuilder.utilities.Converters
 
 @Database(entities = [ExerciseEntity::class], version = 4, exportSchema = false)  // Incremented version to 4

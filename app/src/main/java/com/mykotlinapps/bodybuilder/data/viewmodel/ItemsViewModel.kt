@@ -1,4 +1,4 @@
-package com.mykotlinapps.bodybuilder.ui
+package com.mykotlinapps.bodybuilder.data.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
