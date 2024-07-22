@@ -11,6 +11,7 @@ import android.widget.CalendarView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,8 @@ import com.mykotlinapps.bodybuilder.data.WorkoutSession
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 import com.mykotlinapps.bodybuilder.ui.StrengthScoreView
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -67,6 +70,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -75,13 +79,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Bind the views using view binding
-        binding.apply {
-            showLoadingAnimation()
 
-            Handler(Looper.getMainLooper()).postDelayed({
+        binding.apply {
+
+            showLoadingAnimation()
+            viewLifecycleOwner.lifecycleScope.launch {
+                delay(3000)
                 hideLoadingAnimation()
-            }, 3000)
+            }
 
             setupStrengthScoreView()
             setupCalendar()
