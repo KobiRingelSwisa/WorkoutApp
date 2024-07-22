@@ -19,7 +19,7 @@
                 android:id="@+id/etWorkoutName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Workout Name"
+                android:hint="@string/workout_name"
                 android:minHeight="48dp" />
 
             <Button
@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Add Exercise" />
+                android:text="@string/add_exercise" />
 
             <LinearLayout
                 android:id="@+id/exercisesContainer"
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Save Workout" />
+                android:text="@string/save_workout" />
 
         </LinearLayout>
     </ScrollView>

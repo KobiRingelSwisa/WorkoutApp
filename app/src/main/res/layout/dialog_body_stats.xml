@@ -10,7 +10,7 @@
         android:id="@+id/dialogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Body Stats"
+        android:text="@string/body_stats"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -20,7 +20,7 @@
         android:id="@+id/weightEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Weight (kg)"
+        android:hint="@string/weight_kg"
         android:inputType="numberDecimal"
         android:padding="8dp" />
 
@@ -28,7 +28,7 @@
         android:id="@+id/bodyFatEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Body Fat (%)"
+        android:hint="@string/body_fat"
         android:inputType="numberDecimal"
         android:padding="8dp"
         android:layout_marginTop="8dp" />
@@ -37,7 +37,7 @@
         android:id="@+id/waistSizeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Waist Size (cm)"
+        android:hint="@string/waist_size_cm"
         android:inputType="numberDecimal"
         android:padding="8dp"
         android:layout_marginTop="8dp" />
@@ -46,7 +46,7 @@
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:layout_marginTop="16dp"
         android:padding="8dp" />
 </LinearLayout>

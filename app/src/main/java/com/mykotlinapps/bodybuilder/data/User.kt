@@ -10,7 +10,7 @@ import java.util.Date
 data class User(
     val userDetails: UserDetails = UserDetails(),
     val analytics: Analytics = Analytics(),
-    val workouts: List<WorkoutTemplate> = emptyList()
+    val workouts: List<Workout> = emptyList()
 ) {
     constructor() : this(UserDetails(), Analytics(), emptyList())
 }

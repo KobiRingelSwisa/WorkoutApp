@@ -9,21 +9,21 @@
         android:id="@+id/etBodyPart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Body Part"
+        android:hint="@string/body_part"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/etEquipment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Equipment"
+        android:hint="@string/equipment"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/etId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID"
+        android:hint="@string/id"
         android:inputType="text"
         android:visibility="gone" />
 
@@ -31,13 +31,13 @@
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/etTarget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Target"
+        android:hint="@string/target"
         android:inputType="text" />
 </LinearLayout>

@@ -20,13 +20,13 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="back_button" />
+            android:contentDescription="@string/back_button" />
 
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Workout Plans"
+            android:text="@string/workout_plans"
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingStart="16dp" />
@@ -40,7 +40,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Search exercise"
+                android:hint="@string/search_exercise"
                 android:paddingStart="8dp"
                 android:background="@android:color/transparent" />
 

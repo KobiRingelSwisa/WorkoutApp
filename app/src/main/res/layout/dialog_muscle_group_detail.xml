@@ -10,7 +10,7 @@
         android:id="@+id/dialogMuscleGroupTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Muscle Group"
+        android:text="@string/muscle_group"
         android:textSize="18sp"
         android:textStyle="bold"
         android:paddingBottom="8dp"
@@ -20,7 +20,7 @@
         android:id="@+id/dialogPerformanceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Performance"
+        android:text="@string/performance"
         android:textSize="16sp"
         android:paddingBottom="8dp"
         android:textColor="@color/black"/>
@@ -29,7 +29,7 @@
         android:id="@+id/dialogInsightsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insights"
+        android:text="@string/insights"
         android:textSize="14sp"
         android:textColor="@color/black"/>
 </LinearLayout>

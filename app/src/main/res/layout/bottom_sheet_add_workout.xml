@@ -9,7 +9,7 @@
         android:id="@+id/plannedWorkoutOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Planned Workout"
+        android:text="@string/planned_workout"
         android:padding="16dp" />
 
 
@@ -17,21 +17,21 @@
         android:id="@+id/freestyleWorkoutOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Freestyle Workout"
+        android:text="@string/freestyle_workout"
         android:padding="16dp" />
 
     <TextView
         android:id="@+id/bodyStatsOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Body Stats"
+        android:text="@string/body_stats"
         android:padding="16dp" />
 
     <TextView
         android:id="@+id/progressPhotoOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Progress Photo"
+        android:text="@string/progress_photo"
         android:padding="16dp" />
 
 </LinearLayout>

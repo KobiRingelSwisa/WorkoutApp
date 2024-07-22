@@ -7,37 +7,37 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.google.android.material.bottomsheet.BottomSheetDialog
-
 import com.mykotlinapps.bodybuilder.databinding.BottomSheetAddWorkoutBinding
 import com.mykotlinapps.bodybuilder.databinding.FragmentHomeBinding
 import java.util.*
 import android.Manifest
-
+import android.content.ContentValues
+import android.net.Uri
+import android.os.Environment
 import androidx.activity.result.contract.ActivityResultContracts
-
+import androidx.core.content.FileProvider
 import com.mykotlinapps.bodybuilder.R
 import com.mykotlinapps.bodybuilder.data.adapter.RecentSessionsAdapter
-
 import com.mykotlinapps.bodybuilder.data.Plan
 import com.mykotlinapps.bodybuilder.data.PlansAdapter
 import com.mykotlinapps.bodybuilder.data.Workout
-
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.File
+import java.text.SimpleDateFormat
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private var imageUri: Uri? = null
     private val workoutPlans = mapOf(
         "2023-07-19" to listOf(
             Plan("Workout A", "Description of Workout A"),
@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         )
     )
 
+
     private val requestCameraPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
@@ -56,6 +57,30 @@ class HomeFragment : Fragment() {
             openCamera()
         } else {
             Toast.makeText(context, "Camera permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+        if (success) {
+            checkStoragePermission()
+        } else {
+            Toast.makeText(context, "Image capture failed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val requestStoragePermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions[Manifest.permission.READ_MEDIA_IMAGES] == true -> {
+                imageUri?.let { uri -> saveImageToGallery(uri) }
+            }
+            permissions[Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED] == true -> {
+                imageUri?.let { uri -> saveImageToGallery(uri) }
+            }
+            else -> {
+                Toast.makeText(context, "Storage permission denied", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -176,9 +201,63 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun checkStoragePermission() {
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                imageUri?.let { uri -> saveImageToGallery(uri) }
+            }
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                imageUri?.let { uri -> saveImageToGallery(uri) }
+            }
+            shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_IMAGES) -> {
+                Toast.makeText(context, "Storage permission is needed to save the photo", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                requestStoragePermissionLauncher.launch(arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED))
+            }
+        }
+    }
+
     private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivity(intent)
+        val imageFile = createImageFile()
+        imageUri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.fileprovider",
+            imageFile
+        )
+        takePictureLauncher.launch(imageUri)
+    }
+
+    private fun createImageFile(): File {
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
+        val storageDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
+    }
+
+    private fun saveImageToGallery(uri: Uri) {
+        val contentResolver = requireContext().contentResolver
+        val contentValues = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "Image_${System.currentTimeMillis()}.jpg")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+        }
+
+        val galleryImageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+        galleryImageUri?.let { galleryUri ->
+            contentResolver.openOutputStream(galleryUri).use { outputStream ->
+                contentResolver.openInputStream(uri).use { inputStream ->
+                    inputStream?.copyTo(outputStream!!)
+                }
+            }
+            Toast.makeText(context, "Image saved to gallery", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showPlansForDay(date: String, plans: List<Plan>) {

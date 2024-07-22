@@ -23,7 +23,7 @@
             android:id="@+id/text_exercise_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Exercise Title"
+            android:text="@string/exercise_title"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
             android:id="@+id/expandCollapseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expand" />
+            android:text="@string/expand" />
 
 
     </LinearLayout>
@@ -56,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="KG"
+                android:hint="@string/kg"
                 android:inputType="number"
                 android:layout_marginEnd="8dp" />
 
@@ -65,14 +65,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Reps"
+                android:hint="@string/reps"
                 android:inputType="number" />
 
             <Button
                 android:id="@+id/button_remove_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Remove" />
+                android:text="@string/remove" />
         </LinearLayout>
 
     </LinearLayout>
@@ -81,6 +81,6 @@
         android:id="@+id/button_add_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add a Set" />
+        android:text="@string/add_a_set" />
 
 </LinearLayout>

@@ -24,7 +24,7 @@
         android:id="@+id/logNextSetButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log Next Set"
+        android:text="@string/log_next_set"
         android:backgroundTint="@color/gold"
         android:layout_marginTop="16dp"
         android:layout_alignParentBottom="true"
