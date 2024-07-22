@@ -20,6 +20,7 @@ import com.mykotlinapps.bodybuilder.data.Workout
 import com.mykotlinapps.bodybuilder.databinding.DialogAddExerciseBinding
 import com.mykotlinapps.bodybuilder.databinding.FragmentGenerateWorkoutBinding
 import java.util.Date
+import java.util.UUID
 
 class GenerateWorkoutFragment : Fragment() {
 
@@ -73,7 +74,7 @@ class GenerateWorkoutFragment : Fragment() {
                 val bodyPart = dialogBinding.etBodyPart.text.toString()
                 val equipment = dialogBinding.etEquipment.text.toString()
                 val gifUrl = "" // dialogBinding.etGifUrl.text.toString()
-                val id = db.collection("exercises").document().id
+                val id = UUID.randomUUID().toString()
                 val name = dialogBinding.etName.text.toString()
                 val target = dialogBinding.etTarget.text.toString()
                 val exercise = Exercise(id,name, bodyPart, equipment, gifUrl, target, emptyList(), emptyList())
@@ -139,7 +140,8 @@ class GenerateWorkoutFragment : Fragment() {
         }
 
         val userId = auth.currentUser?.uid ?: return
-        val workout = Workout(workoutName, "Custom duration", Date(), exercises)
+        val workoutId = UUID.randomUUID().toString()
+        val workout = Workout(workoutName, workoutId, "Custom duration", Date(), exercises)
 
         db.collection("users").document(userId).update("workouts", FieldValue.arrayUnion(workout))
             .addOnSuccessListener {

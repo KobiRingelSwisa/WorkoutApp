@@ -20,6 +20,13 @@
         android:layout_height="match_parent"
         android:padding="10dp">
 
+
+
+        <com.mykotlinapps.bodybuilder.SVGImageView
+            android:id="@+id/svgImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loading_animation"
             android:layout_width="112dp"

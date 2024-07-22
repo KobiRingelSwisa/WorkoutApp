@@ -10,13 +10,13 @@ import com.mykotlinapps.bodybuilder.data.Workout
 import com.mykotlinapps.bodybuilder.data.WorkoutTemplate
 
 class WorkoutsAdapter(
-    private val workoutTemplates: List<Workout>,
+    val workoutTemplates: MutableList<Workout>,
     private val onItemClick: (WorkoutTemplate) -> Unit
 ) : RecyclerView.Adapter<WorkoutsAdapter.WorkoutTemplateViewHolder>() {
 
     class WorkoutTemplateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.templateName)
-        val descriptionTextView: TextView = itemView.findViewById(R.id.templateDescription)
+        val dateTextView: TextView = itemView.findViewById(R.id.templateDescription)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutTemplateViewHolder {
@@ -28,9 +28,14 @@ class WorkoutsAdapter(
     override fun onBindViewHolder(holder: WorkoutTemplateViewHolder, position: Int) {
         val template = workoutTemplates[position]
         holder.nameTextView.text = template.name
-//        holder.descriptionTextView.text = template.name
+        holder.dateTextView.text = template.date.toString()
 //        holder.itemView.setOnClickListener { onItemClick(template) }
     }
 
     override fun getItemCount() = workoutTemplates.size
+
+    fun removeItem(position: Int) {
+        workoutTemplates.removeAt(position)
+        notifyItemRemoved(position)
+    }
 }
